@@ -5,23 +5,23 @@
 import {
     cyan500,
     cyan700,
-    pinkA200,
+    darkBlack,
+    fullBlack,
     grey100,
     grey300,
     grey400,
     grey500,
-    white,
-    darkBlack,
-    fullBlack
+    pinkA200,
+    white
 } from 'material-ui/styles/colors'
-import { fade } from 'material-ui/utils/colorManipulator'
+import {fade} from 'material-ui/utils/colorManipulator'
 import spacing from 'material-ui/styles/spacing'
 
 export default {
     spacing: spacing,
     fontFamily: 'Roboto, sans-serif',
     palette: {
-        primary1Color: '#21412a',
+        primary1Color: 'black',
         primary2Color: cyan700,
         primary3Color: grey400,
         accent1Color: pinkA200,
