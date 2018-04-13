@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import AppBar from 'material-ui/AppBar'
 import Drawer from 'material-ui/Drawer'
 import SideBarItem from './SideBarItem'
-import {List, makeSelectable} from 'material-ui/List'
+import {List} from 'material-ui/List'
 
 /*
   Add you nav links here..
@@ -24,36 +24,6 @@ const links = [
     },
     {isExact: false, linkTo: '/tutorial', text: 'Tutorial'}
 ];
-let SelectableList = makeSelectable(List);
-
-function wrapState(ComposedComponent) {
-    return class SelectableList extends Component {
-        handleRequestChange = (event, index) => {
-            this.setState({
-                selectedIndex: index
-            })
-        };
-
-        componentWillMount() {
-            this.setState({
-                selectedIndex: this.props.defaultValue
-            })
-        }
-
-        render() {
-            return (
-                <ComposedComponent
-                    value={this.state.selectedIndex}
-                    onChange={this.handleRequestChange}
-                >
-                    {this.props.children}
-                </ComposedComponent>
-            )
-        }
-    }
-}
-
-SelectableList = wrapState(SelectableList);
 
 class SideNav extends Component {
     handleClose = () => this.setState({open: false});
@@ -67,7 +37,7 @@ class SideNav extends Component {
         return (
             <div>
                 <AppBar
-                    title='Resource Center'
+                    title='The Base'
                     iconClassNameRight='muidocs-icon-navigation-expand-more'
                     onLeftIconButtonClick={() =>
                         this.setState({open: !this.state.open})}
@@ -77,19 +47,19 @@ class SideNav extends Component {
                     docked={false}
                     onRequestChange={open => this.setState({open})}
                 >
-                    <SelectableList defaultValue={3}>
+                    <List>
                         {links.map((link, i) => {
                             return (
                                 <SideBarItem
                                     isExact={link.isExact}
                                     linkTo={link.linkTo}
                                     primaryText={link.text}
-                                    handleClose={this.handleClose}
+                                    onClick={this.handleClose}
                                     key={i}
                                 />
                             )
                         })}
-                    </SelectableList>
+                    </List>
                 </Drawer>
             </div>
         )
