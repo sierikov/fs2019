@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Card, CardTitle, CardText } from 'material-ui/Card'
 
 class Home extends Component {
-  state = {}
+  state = {};
   render () {
     return (
       <div className='container'>
