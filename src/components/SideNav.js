@@ -1,69 +1,56 @@
-import React, {Component} from 'react'
+import _ from 'lodash'
+import React, { Component } from 'react'
 import AppBar from 'material-ui/AppBar'
 import Drawer from 'material-ui/Drawer'
-import SideBarItem from './SideBarItem'
-import {List} from 'material-ui/List'
-
-/*
-  Add you nav links here..
-    isExact: if true it will be an exact path
-    linkTo: the path you want to go
-    text: title of the nav item
-*/
-
-const links = [
-    {isExact: true, linkTo: '/', text: 'Home'},
-    {isExact: false, linkTo: '/logos', text: 'Logos'},
-    {isExact: false, linkTo: '/posters', text: 'Posters'},
-    {isExact: false, linkTo: '/letterhead', text: 'Letterhead'},
-    {isExact: false, linkTo: '/share-a-story', text: 'Share a Story'},
-    {
-        isExact: false,
-        linkTo: '/service-request-form',
-        text: 'Service Request Form'
-    },
-    {isExact: false, linkTo: '/tutorial', text: 'Tutorial'}
-];
+import SideBarItem from './sideBarItem'
+import { List } from 'material-ui/List'
+import links from '../data/linksData'
 
 class SideNav extends Component {
-    handleClose = () => this.setState({open: false});
+  state = { open: false }
 
-    constructor(props) {
-        super(props);
-        this.state = {open: false}
-    }
+  handleClose = () => this.setState({ open: false })
 
-    render() {
-        return (
-            <div>
-                <AppBar
-                    title='The Base'
-                    iconClassNameRight='muidocs-icon-navigation-expand-more'
-                    onLeftIconButtonClick={() =>
-                        this.setState({open: !this.state.open})}
+  render () {
+    return (
+      <div>
+        <AppBar
+          title={
+            <img
+              src={require('./../img/fus-log.svg')}
+              alt='Franciscan University Logo'
+            />
+          }
+          className='app-bar'
+          iconElementRight={
+            <h1 className='hide-on-small-only'>Resource Center</h1>
+          }
+          onLeftIconButtonTouchTap={() =>
+            this.setState({ open: !this.state.open })}
+          style={{ backgroundColor: '#fff', color: '#21412a' }}
+        />
+        <Drawer
+          open={this.state.open}
+          docked={false}
+          onRequestChange={open => this.setState({ open })}
+        >
+          <List>
+            {_.map(links, ({ isExact, linkTo, text }, key) => {
+              return (
+                <SideBarItem
+                  isExact={isExact}
+                  linkTo={linkTo}
+                  primaryText={text}
+                  onClick={this.handleClose}
+                  key={key}
                 />
-                <Drawer
-                    open={this.state.open}
-                    docked={false}
-                    onRequestChange={open => this.setState({open})}
-                >
-                    <List>
-                        {links.map((link, i) => {
-                            return (
-                                <SideBarItem
-                                    isExact={link.isExact}
-                                    linkTo={link.linkTo}
-                                    primaryText={link.text}
-                                    onClick={this.handleClose}
-                                    key={i}
-                                />
-                            )
-                        })}
-                    </List>
-                </Drawer>
-            </div>
-        )
-    }
+              )
+            })}
+          </List>
+        </Drawer>
+      </div>
+    )
+  }
 }
 
 export default SideNav
