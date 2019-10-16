@@ -1,0 +1,100 @@
+---
+layout: blog
+title: Einfürung
+data: 14 Oktober
+type: Vorlesung
+---
+
+<p>
+    <b>Endliche Automaten</b> sind gekennzeichnet durch:
+</p>
+<ul>
+    <li> endliche Menge von (internen) <b>Zustände</b></li>
+    <li><b>Übergänge</b> zwischen Zuständen: abhängig von internen Struktur des Automaten und der Eingabe</li>
+</ul>
+<p>
+    Im Prinzip sind <b>Rechner</b> ebenfalls <b>endliche Automaten</b>. Also endlich viel Speicherplatz und daher nur
+    endliche Menge an Konfigurationen. <b>ABER: </b> Keine geeignete Beschreibungsebene wegen <i> extrem hoher
+    Zustandsanzahl</i>. Daher abstrahiert man von der Speicherplatzbeschränkung und nimmt <b>potentiell unendliche
+    Speicher</b> an.
+</p>
+<h1 class="title top_30">Beispiel</h1>
+<p>
+    Zum Beispiel nehmen wir ein Geldautomat oder Eintrittskartenautomat. Also für Eintritt brauchen wir 3 Euro.
+    Das Eintrittskartenautomat akzeptiert nur 1 und 2 Euro Münzen. Auch es hat <i>Rückgabe</i>-Taste.
+    Schematische Darstellung finden sie unten links:
+</p>
+<div class="row article-lightbox">
+    <figure class="col-lg-6"><img src="https://cdn1.spiegel.de/images/image-1276140-860_poster_16x9-ekjl-1276140.jpg">
+    </figure>
+    <img class="col-lg-6" src="{{ site.url }}{{ site.baseurl }}/assets/img/diagrams/tickets.svg">
+</div>
+<p>Das Zuständediagramm (oben rechts) zeigt uns was passiert auf jede Schritt in Eintrittskartenautomat.</p>
+<h1 class="title top_30">Grundlegende Definitionen</h1>
+<p>Wie immer brauchen wir Grundlegende Definitionen um was andere Leute sagen zu verstehen.</p>
+<ul>
+    <li><b>Alphabet</b> - endliche Menge von Buchstaben. $\Sigma$ für Alphabete und $a, b, c ...$ für Buchstaben</li>
+    <li><b>Wort</b> - endliche Folge von Buchstaben $ w = a_1 ... a_n $ mit $ a_i \in \Sigma $ heißt <i>Wort über dem
+        Alphabet $\Sigma$</i></li>
+    <li><b>Länge</b> - $ |w| = n $ zeigt wie land ist ein <i>Wort</i> $ w = a_1 ... a_n $. Z.B: $|aba| = 3$</li>
+    <li><b>Anzahl der Vorkommen von Buchstaben</b> - $ |w|_a $ zählt die Anzahl der Vorkommen von $a$ in $w$. Z.B:
+        $|aba|_a = 2$, $|aba|_b = 1$, $|aba|_c = 0$
+    </li>
+    <li><b>Leeres Wort</b> - $\varepsilon$ hat Länge 0.</li>
+    <li><b>Alle Wörtet</b> - die Menge aller Wörter über $\Sigma$ zeigt man als $\Sigma^*$.</li>
+    <li><b>Alle Wörtet ohne Leeres Wort</b> - $\Sigma^+ := \Sigma^*\setminus\{\varepsilon\}$.</li>
+</ul>
+<p>
+    Auch wichtige Definition ist Formale Sprache. <b>Formale Sprache</b>
+    ist die Menge von Wörtern, $L \subseteq \Sigma^*$ is <i>Formale Sprache</i>
+    über $\Sigma$. Mehr Beispiele: die Menge der Wörter über ${a, ..., z}$,
+    die korrekte Wörter der deutschen Sprache sind.
+</p>
+<h1 class="title top_30">
+    Operationen auf Sprachen
+</h1>
+<p><b>Boolesche Operationen:</b></p>
+<ul>
+    <li><b>Vereingung</b> - $L_1 \cup L_2$</li>
+    <li><b>Durchschnitt</b> - $L_1 \cap L_2$</li>
+    <li><b>Komplement</b> - $\overline L := \{ w \in \Sigma | w \not\in L\}$</li>
+    <li><b>Differenz</b> - $L_1 \setminus L_2 := L_1 \cap \overline L_2$</li>
+</ul>
+
+<h1 class="title top_30">
+    Konkatenation:
+</h1>
+<p>Aneinanderhänge von Wörtern:</p>
+<ul>
+    <li><b>Einfache:</b> $u \cdot v := uv$</li>
+</ul>
+<p>Beispiel dazu: Wir haben zwei wörtern: $w_1 = abb, w_2 = ab$. Dann Konkatenation $w_1 \cdot w_2 = abb \cdot ab =
+    abbab$</p>
+<ul>
+    <li><b>Sprachen:</b> $L_1 \cdot L_2 := \{u \cdot v | u \in L_1$ und $v \in L_2 \}$</li>
+</ul>
+<p>
+    Beispiel dazu: Wir haben zwei Sprachen: $L_1 = \{ab, bb\}, L_2 = \{ba, a\}$. Dann Konkatenieren wir diese Sprachen
+    $L_1 \cdot L_2 = \{abba, aba, bbba, bba\}$. Konkatenation mit Leeres Wort gibt uns
+    dieselbe Sprache zurück: $L\cdot\{\varepsilon\} = L$. Und $L \cdot \emptyset = \emptyset$.
+</p>
+<blockquote class="col-md-8 offset-md-2 top_60 bottom_60">
+    Beachte: <br>der Konkatenationspunkt wird auch bei Sprachen meist <u>weggelassen</u>
+    <br>d.h. $L_1L_2$ anstelle von $L_1 \cdot L_2$
+</blockquote>
+<p><b>Kleene-Stern:</b> Iterierte Konkatenation</p>
+<ul>
+    <li>$L^0:=\{\varepsilon\}$</li>
+    <li>$L^n+1:=L^n \cdot L$</li>
+    <li>$L^*:=\bigcup\limits_{n\geq0}L^n$</li>
+    <li>$L^+:=\bigcup\limits_{n\geq1}L^n$</li>
+</ul>
+<p><b>Präfix, Suffix, Infix</b></p>
+<ul>
+    <li>$u$ ist <b>Präfix</b> von $u$ gdw $v = uw$ für $w \in \Sigma^*$</li>
+    <li>$u$ ist <b>Suffix</b> von $u$ gdw $v = wu$ für $w \in \Sigma^*$</li>
+    <li>$u$ ist <b>Infix</b> von $u$ gdw $v = w_1uw_2$ für $w_1, w_2 \in \Sigma^*$</li>
+</ul>
+<p>
+
+</p>

@@ -1,0 +1,24 @@
+<!-- {{include.data }}
+        ================================================== -->
+<section class="subpage">
+    <div class="container">
+        <h1 class="section-title bottom_60">{{include.title}}</h1>
+
+        <div class="row">
+            {% for block in include.data %}
+            <!-- anews -->
+            <div class="col-lg-4">
+                <a class="anews" href="{{block.link}}">
+                    <div class="image" style="background-image:url({{block.image}})"></div>
+                    <div class="date">
+                        <h3 class="big">{{block.number}}</h3>
+                        <span class="little">{{block.date}}</span>
+                    </div>
+                    <div class="category">{{block.type}}</div>
+                    <h2 class="title">{{block.title}}</h2>
+                </a>
+            </div>
+            {% endfor %}
+        </div> <!-- rows end -->
+    </div>
+</section>

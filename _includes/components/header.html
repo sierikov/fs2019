@@ -1,0 +1,26 @@
+<!-- HEADER
+==================================================-->
+<header class="fixed">
+    <!-- Logo -->
+    <a href="/" class="logo">
+        <img src="{{ site.url }}{{ site.baseurl }}/assets/img/logo.png" alt="">
+    </a>
+    <div class="nav-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            {% assign links = site.data.navigation %}
+            {% for link in links %}
+            <li>
+                <a href="{{ site.url }}{{ site.baseurl }}{{ link.url }}">
+                    <span data-hover="{{ link.title }}">{{ link.title }}</span>
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </nav>
+</header>

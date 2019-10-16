@@ -1,0 +1,17 @@
+sass:
+  sass_dir: _sass
+
+collections:
+  pages:
+    output: true
+    permalink: /:path/
+
+permalink: pretty
+
+defaults:
+-
+  scope:
+    path: ""
+    type: "pages"
+  values:
+    title: "Formale Systeme"
