@@ -1,41 +1,1854 @@
-/*********************************/
-/*         INDEX                 */
-/*================================
- *     01.  Variables            *
- *     02.  Bootstrap Custom     *
- *     03.  Components           *
- *     04.  General              *
- *     05.  Helper               *
- *     06.  Menu                 *
- *     07.  Home / Landing       *
- *     08.  Features / Services  *
- *     09.  Testimonial          *
- *     10.  Price                *
- *     11.  C.T.A                *
- *     12.  Blog / Careers / Job *
- *     13.  Work / Projects      *
- *     14.  Team                 *
- *     15.  User Pages           *
- *     16.  Countdown            *
- *     17.  Contact              *
- *     18.  Footer               *
- ================================*/
 
-// @import "variables";
-// @import "bootstrap-custom";
-// @import "components";
-// @import "general";
-// @import "helper";
-// @import "menu";
-// @import "home";
-// @import "features";
-// @import "testi";
-// @import "price";
-// @import "cta";
-// @import "blog";
-// @import "work";
-// @import "team";
-// @import "user";
-// @import "countdown";
-// @import "contact";
-// @import "footer";
+/*------------------------------------------------------------------
+[Table of contents]
+1. Global CSS
+    1.1 Columns CSS
+    1.2 Global Header Logo/Menu CSS
+2. Home Page CSS
+3. Single Portfolio
+4. Service Page CSS
+    4.1 Image Slider / Text Slider CSS
+5. About Page CSS
+6. Team Page CSS
+    6.1 Skills CSS
+7. Blog Page CSS
+8. Single Post CSS
+9. Contact Page CSS
+10. Footer CSS
+11. Responsive CSS
+-------------------------------------------------------------------*/
+
+
+@import "utils/clear";
+@import "utils/sm-clean";
+@import "utils/common";
+
+
+
+/* ===================================
+    1. Global CSS
+====================================== */
+body {
+  font-family: 'Work Sans', sans-serif;
+  font-size: 16px;
+  line-height: 27px;
+  font-weight: 400;
+  color: #000;
+  background-color: #fff;
+  overflow-x: hidden;
+}
+
+body.on {
+  overflow: hidden;
+}
+
+body a {
+  text-decoration: none;
+  color: #000;
+  transition: color .2s ease;
+}
+
+body a:hover {
+  color: #0000ff;
+}
+
+blockquote  {
+  font-family: 'PT+Serif', sans-serif;
+  font-size: 24px;
+  line-height: 40px;
+  font-style: normal;
+  color: #939393;
+  position: relative;
+  margin: 25px 0 50px;
+  max-width: 450px;
+}
+
+blockquote:before {
+  font-family: 'Roboto', sans-serif;
+  content: '\201C';
+  font-size: 305px;
+  line-height: 100%;
+  color: #0000ff;
+  display: block;
+  font-weight: 700;
+  left: -175px;
+  top: 90%;
+  position: absolute;
+  margin-bottom: 0;
+  transform: translateY(-50%);
+}
+
+body p,
+body pre {
+  margin-bottom: 15px;
+}
+
+.site-wrapper img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+}
+
+.doc-loader  {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 99999;
+  background-color: #fff;
+}
+
+.doc-loader img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.content-1170 {
+  width: 1170px;
+  max-width: 95%;
+}
+
+.content-960 {
+  width: 960px;
+  max-width: 95%;
+}
+
+.content-650 {
+  width: 650px;
+  max-width: 95%;
+}
+
+.content-570 {
+  width: 570px;
+  max-width: 95%;
+}
+
+.pagination-holder {
+  margin: 60px 0;
+}
+
+.section-wrapper  {
+  padding-top: 75px;
+}
+
+a.button {
+  color: #fff !important;
+  background-color: #000;
+  padding: 17px 17px 17px 28px;
+  display: inline-block;
+  font-size: 11px;
+  min-width: 165px;
+  letter-spacing: 8px;
+  transition: opacity .3s ease;
+  text-align: center;
+}
+
+a.button:hover {
+  opacity: 0.8;
+}
+
+h1.page-title  {
+  font-size: 32px;
+  line-height: 60px;
+  font-weight: 400;
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+img.title-logo {
+  margin-bottom: 50px;
+}
+
+.page .page-content {
+  background-color: #fff;
+  padding: 75px;
+}
+
+
+/* ===================================
+    1.1 Columns CSS
+====================================== */
+
+.one,
+.one_half,
+.one_third,
+.two_third,
+.three_fourth,
+.one_fourth {
+  margin-right: 8%;
+  float: left;
+  position: relative;
+  margin-bottom: 30px;
+}
+.last {
+  margin-right: 0 !important;
+  clear: right;
+}
+.one {
+  float: none;
+  display: block;
+  clear: both;
+  margin-right: 0;
+}
+.one_half {
+  width: 46%;
+}
+.one_third {
+  width: 28%;
+}
+.two_third {
+  width: 64%;
+}
+.one_fourth {
+  width: 19%;
+}
+.three_fourth {
+  width: 73%;
+}
+
+.animate {
+  opacity: 0;
+  transition: .3s ease-in;
+  -ms-transform: translate(0px,70px);
+  -webkit-transform: translate(0px,70px);
+  transform: translate(0px,70px);
+}
+
+.animate.show-it {
+  opacity: 1;
+  -ms-transform: translate(0px,0px);
+  -webkit-transform: translate(0px,0px);
+  transform: translate(0px,0px);
+}
+
+.wait-01s {
+  -webkit-transition-delay: 0.1s;
+  transition-delay: 0.1s;
+}
+
+.wait-02s {
+  -webkit-transition-delay: 0.2s;
+  transition-delay: 0.2s;
+}
+
+.wait-03s {
+  -webkit-transition-delay: 0.3s;
+  transition-delay: 0.3s;
+}
+
+.wait-04s {
+  -webkit-transition-delay: 0.4s;
+  transition-delay: 0.4s;
+}
+
+.wait-05s {
+  -webkit-transition-delay: 0.5s;
+  transition-delay: 0.5s;
+}
+
+.wait-06s {
+  -webkit-transition-delay: 0.6s;
+  transition-delay: 0.6s;
+}
+
+.wait-07s {
+  -webkit-transition-delay: 0.7s;
+  transition-delay: 0.7s;
+}
+
+.wait-08s {
+  -webkit-transition-delay: 0.8s;
+  transition-delay: 0.8s;
+}
+
+.wait-09s {
+  -webkit-transition-delay: 0.9s;
+  transition-delay: 0.9s;
+}
+
+.wait-10s {
+  -webkit-transition-delay: 1s;
+  transition-delay: 1s;
+}
+
+.wait-11s {
+  -webkit-transition-delay: 1.1s;
+  transition-delay: 1.1s;
+}
+
+.wait-12s {
+  -webkit-transition-delay: 1.2s;
+  transition-delay: 1.2s;
+}
+
+.wait-13s {
+  -webkit-transition-delay: 1.3s;
+  transition-delay: 1.3s;
+}
+
+.wait-14s {
+  -webkit-transition-delay: 1.4s;
+  transition-delay: 1.4s;
+}
+
+.wait-15s {
+  -webkit-transition-delay: 1.5s;
+  transition-delay: 1.5s;
+}
+
+.margin-0 {
+  margin: 0 !important;
+}
+
+.one_half.margin-0 {
+  width: 50%;
+}
+
+.one_third.margin-0 {
+  width: calc(100% / 3);
+}
+
+.two_third.margin-0 {
+  width: calc(100% / 3 * 2);
+}
+
+.one_fourth.margin-0 {
+  width: 25%;
+}
+
+.three_fourth.margin-0 {
+  width: 75%;
+}
+
+/* ===================================
+    1.2 Global Header Logo/Menu CSS
+====================================== */
+
+.header-holder {
+  z-index: 99 !important;
+  background-color: #ffffff;
+  width: 100% !important;
+  top: 0;
+  margin-top: 5%;
+}
+
+.admin-bar .header-holder {
+  top: 32px !important;
+}
+
+.menu-wrapper {
+  max-width: 98%;
+  width: 1170px;
+  min-height: 77px;
+}
+
+@media (min-width:1600px) {
+  .menu-wrapper
+  {
+    width: 1450px;
+  }
+
+}
+
+.header-logo {
+  line-height: 0;
+  font-size: 0;
+  float: left;
+  position: absolute;
+  transform: translateY(-50%);
+  top: 50%;
+}
+
+.header-logo img {
+  height: 60px;
+  margin-bottom: 15px;
+}
+
+.menu-holder {
+  float: right;
+  max-width: 80%;
+}
+
+.toggle-holder {
+  display: none;
+  right: 10px;
+  z-index: 100;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: all .3s ease;
+}
+
+#toggle:hover {
+  cursor: pointer;
+}
+
+#toggle div {
+  height: 3px;
+  margin-bottom: 6px;
+  background-color: #000;
+  width: 22px;
+  transition: all .3s ease;
+  transition-delay: .1s;
+}
+
+#toggle .second-menu-line {
+  transform: translate3d(10px,0,0);
+}
+
+#toggle:hover .second-menu-line {
+  transform: translate3d(0,0,0) !important;
+}
+
+#toggle.on .second-menu-line  {
+  transform: translate3d(-10px,0,0);
+}
+
+#toggle .third-menu-line {
+  margin-bottom: 5px;
+}
+
+.sm-clean .has-submenu  {
+  padding-right: 36px !important;
+}
+
+body .site-wrapper .sm-clean a  {
+  cursor: pointer;
+  color: #000;
+  transition: color .3s ease;
+}
+
+.sm-clean a span.sub-arrow  {
+  right: 10px;
+  margin-top: 1px;
+}
+
+.sm-clean a.highlighted {
+  padding: 15px;
+}
+
+.sm-clean a,
+.sm-clean a:hover,
+.sm-clean a:focus,
+.sm-clean a:active {
+  font-size: 16px;
+  font-weight: 500;
+  transition: color .3s ease, background-color .3s ease;
+  padding: 15px;
+}
+
+.sm-clean ul a,
+.sm-clean ul a:hover,
+.sm-clean ul a:focus,
+.sm-clean ul a:active {
+  font-size: 13px;
+  line-height: 15px;
+  padding: 10px;
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+}
+
+.sm-clean {
+  background-color: transparent;
+  padding: 15px 0;
+}
+
+body .sm-clean a:hover,
+body .sm-clean li a.current {
+  color: #939393;
+}
+
+.sm-clean li  {
+  margin-right: 10px;
+}
+
+.sm-clean > li.menu-item-has-children {
+  margin-right: 0;
+}
+
+.sm-clean li:last-child {
+  margin-right: 0;
+}
+
+.sm-clean a.has-submenu  {
+  padding-right: 24px;
+}
+
+.sub-menu a,
+.children a {
+  padding-left: 15px !important;
+}
+
+.sub-menu .sub-menu a,
+.children .children a,
+.sub-menu .sub-menu a:hover,
+.children .children a:hover {
+  padding-top: 10px !important;
+}
+
+@media (min-width: 925px) {
+
+  .sm-clean ul a span.sub-arrow {
+    margin-top: -4px;
+    right: 23px;
+  }
+  .sm-clean ul {
+    padding: 8px 0;
+  }
+
+}
+
+@media (max-width: 925px) {
+
+  #header-main-menu {
+    display: block;
+    margin: 30% auto 0 auto;
+  }
+
+  .sm-clean ul {
+    background-color: #fff;
+  }
+}
+
+.sm-clean a span.sub-arrow:before  {
+  display: block;
+  content: '\25CF';
+  font-size: 8px;
+  margin-top: 7px;
+  color: #939393;
+  transition: color .2s ease;
+}
+
+.sm-clean a.highlighted span.sub-arrow:before {
+  display: block;
+  content: '\25CF';
+  font-size: 8px;
+  margin-top: 7px;
+  color: #000 !important;
+}
+
+
+
+/* ===================================
+    2. Home Page CSS
+====================================== */
+
+.grid  {
+  width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+  max-width: 100%;
+}
+
+.grid-sizer {
+  width: calc(100% / 3);
+}
+
+.grid-item {
+  float: left;
+  font-size: 0;
+  line-height: 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+.grid-item.p_one_third {
+  width: calc(100% / 3);
+}
+
+.grid-item.p_two_third {
+  width: calc(100% / 3 * 2);
+}
+
+.grid-item.p_one {
+  width: 100%;
+}
+
+.grid-item img {
+  width: 100% !important;
+  height: auto;
+  display: block;
+}
+
+.grid-item .entry-holder {
+  text-align: center;
+  background-color: #fff;
+  padding: 50px 20px;
+}
+
+.grid-item a.item-link:after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: opacity .3s ease-in-out;
+}
+
+.portfolio-text-holder {
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: inline-block;
+  z-index: 1;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  transition: all .3s ease;
+  text-align: center;
+}
+
+.portfolio-title {
+  font-size: 18px;
+  line-height: 30px;
+  margin-bottom: 0;
+  color: #fff;
+}
+
+.portfolio-desc {
+  font-size: 10px;
+  line-height: 22px;
+  color: #fff;
+  letter-spacing: 2px;
+}
+
+.grid-item a.item-link:hover:after,
+.grid-item a.item-link:hover .portfolio-text-holder {
+  opacity: 1;
+}
+
+.more-posts-portfolio-holder {
+  margin-top: 100px;
+  min-height: 1px;
+}
+
+.more-posts-portfolio {
+  color: #fff !important;
+  background-color: #000;
+  padding: 17px 30px 17px 30px;
+  font-weight: 600;
+  display: inline-block;
+  font-size: 11px;
+  min-width: 170px;
+  letter-spacing: 8px;
+  transition: opacity .3s ease;
+}
+
+.more-posts-portfolio:hover {
+  opacity: 0.8 !important;
+}
+
+.more-posts-portfolio {
+  cursor: pointer;
+}
+
+#portfolio-grid {
+  transition: all .5s ease;
+  opacity: 1;
+  transform: translateY(0px);
+  padding: 0;
+  list-style: none;
+}
+
+.isotope.no-transition,
+.isotope.no-transition .isotope-item,
+.isotope .isotope-item.no-transition {
+  -webkit-transition-duration: 0s;
+  -moz-transition-duration: 0s;
+  -ms-transition-duration: 0s;
+  -o-transition-duration: 0s;
+  transition-duration: 0s;
+}
+
+
+
+/* ===================================
+    3. Single Portfolio
+====================================== */
+
+.single-portfolio h1  {
+  padding-top: 0;
+  font-size: 34px;
+  line-height: 110%;
+}
+
+.portfolio-content:after  {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.portfolio-item-wrapper {
+  margin-top: 75px;
+  margin-bottom: 50px;
+}
+
+.info-code-holder {
+  margin-top: 70px;
+}
+
+.info-code-title  {
+  font-size: 10px;
+  color: #000;
+  letter-spacing: 2px;
+  margin-bottom: 0;
+  line-height: 15px;
+}
+
+.info-code-content,
+.info-code-content a {
+  color: #939393;
+}
+
+.medium-text {
+  font-size: 22px;
+  line-height: 40px;
+  color: #939393;
+}
+
+
+
+
+/* ===================================
+    4. Service Page CSS
+====================================== */
+
+.service-item  {
+  margin-bottom: 60px;
+}
+
+h3.service-title  {
+  font-size: 22px;
+  line-height: 28px;
+}
+
+
+/* ===================================
+    4.1 Image Slider / Text Slider CSS
+====================================== */
+
+.image-slider-wrapper {
+  margin-bottom: 45px;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  width: 100% !important;
+}
+
+.swiper-scrollbar-drag {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  background-color: white;
+  border-radius: 10px;
+  left: 0;
+  top: -10px;
+  height: 18px;
+  border: 2px solid black;
+  border-radius: 90%;
+  width: 18px !important;
+}
+
+.swiper-scrollbar {
+  position: relative;
+  left: 50%;
+  bottom: 0;
+  z-index: 50;
+  height: 2px;
+  width: 300px;
+  right: auto;
+  margin-left: -150px;
+  background-color: black;
+  margin-bottom: 50px;
+  border-radius: 0;
+  cursor: pointer;
+}
+
+.swiper-scrollbar.dots {
+  display: none;
+}
+
+.swiper-pagination {
+  left: 50%;
+  transform: translateX(-50%);
+  display: none;
+  position: relative;
+  margin-bottom: 50px;
+}
+
+.swiper-pagination.dots {
+  display: block;
+}
+
+.swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  opacity: 1;
+  vertical-align: middle;
+  margin: 0 5px;
+  border: 6px solid white;
+}
+
+.swiper-pagination-bullet.swiper-pagination-bullet-active {
+  width: 18px;
+  height: 18px;
+  border: 2px solid black;
+  background-color: transparent;
+}
+
+.text-slider-wrapper  {
+  margin-bottom: 50px;
+}
+
+.text-slider .slider-text-holder {
+  width: 600px;
+  max-width: 95%;
+  font-size: 22px;
+  line-height: 40px;
+  color: #939393;
+}
+
+
+
+/* ===================================
+    5. About Page CSS
+====================================== */
+
+ul.archive-list {
+  list-style: none;
+  padding: 0;
+  text-align: left;
+}
+
+ul.archive-list li {
+  border-top: 1px solid #f7f7f7;
+  padding: 15px 20px;
+}
+
+ul.archive-list li:first-child {
+  border: none;
+}
+
+ul.archive-list li span {
+  font-weight: 700;
+  color: #0000ff;
+}
+
+
+
+/* ===================================
+    6. Team Page CSS
+====================================== */
+
+.team-holder .member {
+  position: relative;
+  margin-right: 0;
+  margin-bottom: 0;
+}
+
+.team-holder .member img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.team-holder .member.one_half {
+  width: 50%;
+}
+
+.team-holder .member.one_third {
+  width: calc(100% / 3);
+}
+
+.team-holder .member.one_fourth {
+  width: calc(100% / 4);
+}
+
+.team-holder .member-info {
+  opacity: 0;
+  transition: .4s ease;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  text-align: center;
+  background-color: #000000;
+  color: #fff;
+}
+
+.team-holder .member-info:hover {
+  opacity: 1;
+}
+
+.team-holder .member-name {
+  margin-top: 35%;
+  margin-bottom: 25px;
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: 2px;
+}
+
+.team-holder .member-name a {
+  color: #fff;
+}
+
+.team-holder .member-social-holder {
+  font-size: 16px;
+  line-height: 20px;
+  padding: 0 40px;
+}
+
+.team-holder .social {
+  display: inline-block;
+  font-size: 25px;
+  margin: 0 5px;
+}
+
+.team-holder .social a {
+  color: #fff;
+}
+
+.team-holder .social a:hover {
+  color: #dfdad4;
+}
+
+
+
+/* ===================================
+    6.1 Skills CSS
+====================================== */
+
+.progress_bar  {
+  margin-bottom: 13px;
+}
+
+.progress_bar_field_holder  {
+  height: 10px;
+  display: inline-block;
+  position: relative;
+  width: 300px;
+  vertical-align: middle;
+  border-radius: 30px;
+  overflow: hidden;
+  background-color: #eeeeee;
+}
+
+.progress_bar_title {
+  display: inline-block;
+  width: 170px;
+  margin-right: 23px;
+}
+
+.progress_bar_field_perecent  {
+  height: 10px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #000;
+}
+
+
+
+/* ===================================
+    7. Blog Page CSS
+====================================== */
+
+.blog .site-content  {
+  background-color: #fff;
+}
+
+.blog-holder {
+  width: 1300px;
+  max-width: 95%;
+  margin-top: 10%;
+}
+
+.blog-item-holder {
+  width: 60%;
+}
+
+.blog-item-holder .entry-holder  {
+  display: flex;
+  width: 100%;
+  position: relative;
+  padding: 50px 0;
+  align-items: center;
+}
+
+.blog-item-holder .entry-holder:after  {
+  content: "";
+  width: 90%;
+  height: 1px;
+  background-color: #f7f7f7;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.blog-item-holder .post-thumbnail  {
+  position: absolute;
+  width: 66%;
+  right: -68%;
+  top: 0;
+  opacity: 0;
+  transition: all .3s ease;
+  text-align: center;
+  visibility: hidden;
+}
+
+.blog-item-holder .entry-holder.active-post + .post-thumbnail  {
+  opacity: 1;
+  transform: translateY(-120px);
+  visibility: visible;
+}
+
+.blog-item-holder .entry-info  {
+  font-size: 10px;
+  margin-right: 20px;
+  min-width: 150px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.blog-item-holder h2.entry-title {
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 32px;
+  padding: 0;
+  word-break: break-word;
+}
+
+.blog-item-holder h2.entry-title a:hover {
+  color: #aeaeae;
+}
+
+
+/* ===================================
+    8. Single Post CSS
+====================================== */
+
+.single .site-content {
+  background-color: #fff;
+}
+
+.single .post-info-wrapper div {
+  margin-bottom: 20px;
+}
+
+.single .post-info-wrapper {
+  margin-bottom: 30px;
+  font-size: 15px;
+  color: #939393;
+  width: 150px;
+  margin-right: 45px;
+  float: left;
+  margin-top: 7px;
+}
+
+.single .post-info-wrapper a {
+  color: #939393;
+}
+
+.single .post-info-wrapper .text-holder  {
+  font-size: 10px;
+  color: #000;
+  letter-spacing: 2px;
+  margin-bottom: 0;
+  line-height: 15px;
+}
+
+.single article {
+  padding-top: 75px;
+}
+
+.single h1.entry-title {
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 40px;
+  margin-bottom: 10px;
+  -ms-word-wrap: break-word;
+  word-wrap: break-word;
+  text-align: center;
+  width: 720px;
+  margin: 20px auto;
+  max-width: 95%;
+}
+
+.single .entry-info div:last-of-type:after {
+  display: none;
+}
+
+.single .entry-info ul  {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.single .entry-info ul li  {
+  display: inline-block;
+}
+
+.single .entry-info .cat-links li:after  {
+  content: ",";
+  padding-right: 5px;
+}
+
+.single .entry-info .cat-links ul li:last-child:after {
+  display: none;
+}
+
+.single-post-featured-image  {
+  text-align: center;
+  padding-bottom: 40px;
+  width: 1300px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 95%;
+}
+
+.single .entry-content  {
+  font-size: 15px;
+  line-height: 30px;
+  color: #000;
+  width: 680px;
+  float: left;
+}
+
+.tags-holder {
+  margin: 30px 0;
+  display: inline-block;
+}
+
+.tags-holder a  {
+  color: #0000ff;
+  border: 1px solid #0000ff;
+  text-decoration: none;
+  margin-right: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: inline-block;
+  padding: 5px 17px 5px 20px;
+  font-size: 10px;
+  text-transform: uppercase;
+  background-color: #ffffff;
+  border-radius: 50px;
+  transition: all .3s ease;
+  letter-spacing: 3px;
+  font-weight: 700;
+}
+
+.tags-holder a:last-of-type {
+  margin-right: 0;
+}
+
+.tags-holder a:hover {
+  background-color: #0000ff;
+  color: #fff !important;
+}
+
+.single .nav-links {
+  padding: 40px 0;
+  position: relative;
+}
+
+.single .nav-links a {
+  color: #000;
+  position: relative;
+  float: right;
+}
+
+.single .nav-links a:hover {
+  color: #000 ;
+}
+
+.single .nav-previous {
+  display: inline-block;
+  text-align: left;
+  float: left;
+  width: 260px;
+  position: relative;
+}
+
+.single .nav-next {
+  display: inline-block;
+  float: right;
+  width: 260px;
+  text-align: right;
+  position: relative;
+}
+
+.nav-previous a,
+.nav-next a {
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 30px;
+}
+
+.single .nav-previous a {
+  float: left;
+  position: relative;
+}
+
+.single .nav-previous .arrow-holder {
+  display: block;
+  font-size: 50px;
+  transition: transform .3s ease;
+  position: absolute;
+  top: 0;
+  left: -75px;
+}
+
+.single .nav-previous a:hover + .arrow-holder {
+  transform: translate(-10px, 0);
+}
+
+.single .nav-next .arrow-holder  {
+  display: block;
+  font-size: 50px;
+  transition: transform .3s ease;
+  position: absolute;
+  top: 0;
+  right: -70px;
+}
+
+.single .nav-next a:hover + .arrow-holder {
+  transform: translate(10px, 0);
+}
+
+
+
+/* ===================================
+    9. Contact Page CSS
+====================================== */
+
+.contact-info span {
+  color: #adadad;
+}
+
+.contact-form {
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.contact-form input[type=text],
+.contact-form input[type=email],
+.contact-form textarea {
+  font-family: 'Work Sans', sans-serif;
+  color: #000;
+  border: 0;
+  border-bottom: 2px solid;
+  height: 28px;
+  font-size: 16px;
+  line-height: 24px;
+  width: 100%;
+  padding: 0;
+  margin-bottom: 40px;
+  background-color: transparent;
+}
+
+.contact-form textarea {
+  height: 150px;
+}
+
+.contact-form input[type=submit] {
+  font-family: 'Poppins', sans-serif;
+  border: 2px solid #000;
+  display: block;
+  color: #000;
+  background-color: transparent;
+  text-align: center;
+  padding-bottom: 25px;
+  padding-top: 25px;
+  cursor: pointer;
+  font-size: 15px;
+  vertical-align: middle;
+  text-decoration: none;
+  transition: all 0.2s linear;
+  width: 100%;
+  font-weight: 700;
+}
+.contact-form input[type=submit]:hover {
+  background-color: #000000;
+  color: #fff;
+}
+
+.contact-form input[type=text]::-webkit-input-placeholder,
+.contact-form input[type=email]::-webkit-input-placeholder,
+.contact-form textarea::-webkit-input-placeholder {
+  font-family: 'Work Sans', sans-serif;
+  color: #000;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 30px;
+}
+.contact-form input[type=text]::-moz-placeholder,
+.contact-form input[type=email]::-moz-placeholder,
+.contact-form textarea::-moz-placeholder {
+  font-family: 'Work Sans', sans-serif;
+  color: #000;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 30px;
+  opacity: 1;
+}
+.contact-form input[type=text]:-ms-input-placeholder,
+.contact-form input[type=email]:-ms-input-placeholder,
+.contact-form textarea:-ms-input-placeholder {
+  font-family: 'Work Sans', sans-serif;
+  color: #000;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 30px;
+}
+.contact-form input[type=text]:-moz-placeholder,
+.contact-form input[type=email]:-moz-placeholder,
+.contact-form textarea:-moz-placeholder {
+  font-family: 'Work Sans', sans-serif;
+  color: #000;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 30px;
+  opacity: 1;
+}
+
+
+
+/* ===================================
+    10. Footer CSS
+====================================== */
+
+footer ul  {
+  list-style: none;
+  padding-left: 0;
+  margin-left: 0;
+}
+
+.footer {
+  font-size: 16px;
+  line-height: 36px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  clear: both;
+  text-align: center;
+  background-repeat: no-repeat;
+  background-size: auto;
+  background-position: center top;
+}
+
+.footer-content {
+  padding-top: 35px;
+}
+
+.social-holder {
+  margin-bottom: 35px;
+  margin-top: 5px;
+}
+
+.social-holder a  {
+  font-size: 17px;
+  margin-right: 25px;
+}
+
+.social-holder a:hover {
+  color: #939393;
+}
+
+.social-holder a:last-of-type  {
+  margin: 0;
+}
+
+.copyright-holder {
+  margin-top: 35px;
+}
+
+.copyright-holder a {
+  color: #939393;
+}
+
+.copyright-holder a:hover {
+  color: #565656;
+}
+
+
+
+
+/* ===================================
+    11. Responsive CSS
+====================================== */
+
+@media screen and (max-width: 1360px) {
+
+  .single .nav-links .content-1170 {
+    max-width: 80%;
+  }
+
+  .team-holder .member-info {
+    display: block !important;
+    opacity: 1 !important;
+    position: relative;
+    min-height: 180px;
+    padding: 30px 0;
+  }
+
+  .team-holder .member-name {
+    margin-top: 0;
+  }
+
+}
+
+
+@media screen and (max-width: 1024px) {
+
+  .sm-clean li {
+    margin-right: 8px;
+  }
+
+  .sm-clean a,
+  .sm-clean a:hover,
+  .sm-clean a:focus,
+  .sm-clean a:active,
+  .sm-clean a.highlighted {
+    padding: 15px 8px;
+  }
+
+  .blog-holder,
+  .footer-content {
+    width: 100%;
+  }
+
+}
+
+@media screen and (max-width: 1020px) {
+
+  .wait-01s,
+  .wait-02s,
+  .wait-03s,
+  .wait-04s,
+  .wait-05s,
+  .wait-06s,
+  .wait-07s,
+  .wait-08s,
+  .wait-09s,
+  .wait-10s,
+  .wait-11s,
+  .wait-12s,
+  .wait-13s,
+  .wait-14s,
+  .wait-15s {
+    -webkit-transition-delay: 0s;
+    transition-delay: 0s;
+  }
+
+  .single h1.entry-title {
+    font-size: 38px;
+    line-height: 44px;
+  }
+
+  .single-post-header-content {
+    margin-bottom: 0;
+  }
+
+  .single .post-info-wrapper {
+    float: none;
+    width: 100%;
+    text-align: center;
+    margin-top: 0;
+  }
+
+  .single .entry-info > div {
+    display: inline-block;
+    margin: 0 20px;
+  }
+
+  .single .entry-content {
+    width: 100%;
+    float: none;
+  }
+
+  blockquote {
+    font-size: 17px;
+    line-height: 28px;
+    max-width: 100% !important;
+  }
+
+  blockquote:before {
+    position: relative !important;
+    left: -8px !important;
+    font-size: 180px;
+    line-height: 37px !important;
+    top: 10px !important;
+    line-height: 0 !important;
+    margin-bottom: 0 !important;
+    margin-top: 80px;
+  }
+
+  .single .arrow-holder {
+    display: none !important;
+  }
+
+  .blog-item-holder {
+    width: 100%;
+    padding: 5px 0;
+  }
+
+  .blog-item-holder:first-of-type {
+    margin-top: 30px;
+  }
+
+  .blog-item-holder h2.entry-title {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 30px;
+    line-height: 39px;
+  }
+
+  .blog-item-holder .entry-holder:after {
+    left: 5%;
+  }
+
+  .blog-item-holder .post-thumbnail {
+    display: none !important;
+  }
+
+  .blog-item-holder .entry-holder {
+    max-width: 100%;
+    width: 100%;
+    display: block;
+    text-align: center;
+    padding: 25px 0;
+  }
+
+  .team-holder .member.one_third {
+    width: 50%;
+    float: left;
+  }
+
+  .team-holder .member.one_half,
+  .team-holder .member.one_fourth {
+    width: 50%;
+    float: left;
+  }
+
+}
+
+@media screen and (max-width: 925px) {
+
+  .toggle-holder.on {
+    background-color: black;
+    padding: 10px;
+    border-radius: 90%;
+    width: 23px;
+    height: 23px;
+  }
+
+  #toggle.on {
+    width: 23px;
+    height: 23px;
+    margin-top: 3px;
+  }
+
+  #toggle.on div {
+    background-color: white;
+    width: 24px;
+  }
+
+  #toggle.on .second-menu-line {
+    opacity: 0;
+  }
+
+  #toggle.on .first-menu-line {
+    transform: rotate(45deg) translate(5px, 5px);
+    -ms-transform: rotate(45deg) translate(5px, 5px);
+    -webkit-transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  #toggle.on .third-menu-line {
+    transform: rotate(-45deg) translate(7px, -9px);
+    -ms-transform: rotate(-45deg) translate(7px, -9px);
+    -webkit-transform: rotate(-45deg) translate(7px, -8px);
+  }
+
+  #header-main-menu {
+    width: 180px;
+  }
+
+  .menu-wrapper {
+    width: 95%;
+  }
+
+  .main-menu ul {
+    width: 12em;
+  }
+
+  .toggle-holder {
+    display: block;
+  }
+
+  .sm-clean li {
+    margin: 0 auto !important;
+    border: 0;
+  }
+
+  .sm-clean .has-submenu {
+    padding-right: 10px !important;
+  }
+
+  .menu-holder {
+    position: fixed;
+    text-align: center;
+    height: 100%;
+    background-color: #ffffff;
+    right: -100%;
+    top: 0;
+    transition: right .3s ease;
+    width: 100%;
+    overflow: auto;
+    max-width: 100%;
+    z-index: 99;
+  }
+
+  .menu-holder.show {
+    right: 0;
+  }
+
+  .sm-clean ul ul a,
+  .sm-clean ul ul a:hover,
+  .sm-clean ul ul a:focus,
+  .sm-clean ul ul a:active {
+    border: none;
+  }
+
+  .sm-clean a span.sub-arrow {
+    background: transparent;
+  }
+
+  .sm-clean a,
+  .sm-clean a:hover,
+  .sm-clean a:focus,
+  .sm-clean a:active,
+  .sm-clean a.highlighted {
+    padding: 10px;
+    margin-bottom: 5px;
+  }
+
+  .sm-clean a span.sub-arrow {
+    right: -10px;
+    width: 35px;
+    height: 30px;
+    top: 7px;
+  }
+
+  .sm-clean a span.sub-arrow:before {
+    display: block;
+    content: "\f078";
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .sm-clean a.highlighted span.sub-arrow:before {
+    display: block;
+    content: "\f077";
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .sm-clean a,
+  .sm-clean a:hover,
+  .sm-clean a:focus,
+  .sm-clean a:active {
+    font-size: 22px;
+    line-height: 28px;
+    border-left: 0 !important;
+  }
+}
+
+
+
+@media screen and (max-width: 767px) {
+
+  .section-wrapper,
+  .single article {
+    padding: 35px 0;
+  }
+
+  .portfolio-item-wrapper {
+    margin-top: 35px;
+  }
+
+  .one_half,
+  .one_third,
+  .one_fourth,
+  .two_third,
+  .three_fourth {
+    width: 100% !important;
+    float: none;
+    margin-right: 0;
+    margin-left: 0;
+    text-align: center;
+  }
+
+  .blog-item-holder {
+    width: 100%;
+    margin-right: auto;
+    text-align: center;
+    float: none;
+  }
+
+  .site-content {
+    overflow: hidden;
+  }
+
+  blockquote {
+    margin-top: 115px;
+  }
+
+  a.button {
+    padding-left: 35px;
+    padding-right: 35px;
+    font-size: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .grid-item,
+  .grid-sizer {
+    width: 100% !important;
+  }
+
+  .team-holder .member-info {
+    min-height: 0;
+  }
+
+  .team-holder .member.one_third,
+  .team-holder .member.one_half,
+  .team-holder .member.one_fourth {
+    width: 100%;
+    float: none;
+  }
+
+  .swiper-scrollbar {
+    width: 200px;
+    margin-left: -100px;
+  }
+
+  .info-code-holder {
+    margin-top: 30px;
+    margin-bottom: 42px;
+  }
+
+  .medium-text {
+    font-size: 20px;
+    line-height: 33px;
+  }
+
+  .contact-form {
+    margin-top: 75px;
+  }
+
+  .footer,
+  .footer-content {
+    padding-top: 0;
+  }
+
+}
+
+@media screen and (max-width: 750px) {
+
+  .blog-item-holder .entry-holder {
+    max-width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .single .nav-previous,
+  .single .nav-next {
+    display: block;
+    width: 95%;
+    text-align: center;
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .single .nav-previous a,
+  .single .nav-next a {
+    float: none;
+  }
+
+  .single .nav-previous {
+    padding-bottom: 40px;
+  }
+
+}
+
+@media screen and (max-width: 650px) {
+
+  h1.page-title br {
+    display: none;
+  }
+
+  .header-logo img {
+    height: 45px;
+  }
+
+  h1.page-title {
+    font-size: 27px;
+    margin-top: 17.5vh;
+    line-height: 40px;
+    margin-bottom: 30px;
+    padding-top: 0;
+  }
+
+  img.title-logo {
+    margin-bottom: 20.3vh;
+  }
+
+  .blog-item-holder .entry-date.published,
+  .blog-item-holder .cat-links,
+  .single .entry-info div,
+  .single .entry-info .cat-links ul {
+    display: block;
+  }
+
+  .blog-item-holder .entry-date.published:after,
+  .single .entry-info div:after {
+    display: none;
+  }
+}
