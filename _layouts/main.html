@@ -1,195 +1,89 @@
-<!DOCTYPE HTML>
-<html lang="en-US">
-<head>
-    <title>Formale Systeme</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="description" content="Formale Systeme script by ArtemSer" />
-    <meta name="keywords" content="Formale Systeme, TU Dresden" />
-    <meta name="author" content="ArtemSer" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+---
+layout: core
+---
 
-    <link rel="shortcut icon" href="{{ site.url }}{{ site.baseurl }}/assets/images/favicon.png" />
-    <link href='https://fonts.googleapis.com/css?family=Work%20Sans:400,500,700,900%7CPT%20Serif%7CRoboto:700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css"  href='{{ site.url }}{{ site.baseurl }}/assets/css/plugins/swiper.min.css' />
-    <link rel="stylesheet" type="text/css"  href='{{ site.url }}{{ site.baseurl }}/assets/css/plugins/awesome.css' />
-    <link rel="stylesheet" type="text/css"  href='{{ site.url }}{{ site.baseurl }}/assets/css/style.css' />
-</head>
 
-<body>
+<div class="section-wrapper">
 
-<div class="site-wrapper">
-    <div class="doc-loader"></div>
+    <h1 class="entry-title page-title block content-1170 center-relative">
+        Hallo, mein Freund. <br>
+        Das ist <b>Formale Systeme</b> Webscript.
+    </h1>
 
-    <header class="header-holder">
-        <div class="menu-wrapper center-relative relative">
+    <img class="title-logo center-relative block"
+         src="{{ site.url }}{{ site.baseurl }}/assets/img/utils/divider_01.png" alt="">
 
-            <div class="header-logo">
-                <a href="/">
-                    <img src="{{ site.url }}{{ site.baseurl }}/assets/img/logo.png" alt="Formale Systeme">
-                </a>
-            </div>
+    <div class="full-page-width center-relative">
+        <div id="portfolio-wrapper">
+            <ul class="grid" id="portfolio-grid">
+                <li class="grid-sizer"></li>
 
-            <div class="toggle-holder">
-                <div id="toggle">
-                    <div class="first-menu-line"></div>
-                    <div class="second-menu-line"></div>
-                    <div class="third-menu-line"></div>
-                </div>
-            </div>
+                <li class="grid-item element-item p_one_third">
+                    <a class="item-link" href="/endliche/">
+                        <img src="{{ site.url }}{{ site.baseurl }}/assets/img/backgrounds/endliche.png"/>
+                        <div class="portfolio-text-holder">
+                            <p class="portfolio-title">
+                                Endliche Automaten
+                            </p>
+                            <p class="portfolio-desc">
+                                Fünf Themen
+                            </p>
+                        </div>
+                    </a>
+                </li>
 
-            <div class="menu-holder">
-                <nav id="header-main-menu">
-                    <ul class="main-menu sm sm-clean">
-                        <li class="menu-item-has-children">
-                            <a href="index.html" class="has-submenu">
-                                Topics
-                            </a>
-                            <ul class="sub-menu">
-                                <li>
-                                    <a href="home-box.html">Endliche Automaten</a>
-                                </li>
-                                <li>
-                                    <a href="home-box.html">Grammatiken</a>
-                                </li>
-                                <li>
-                                    <a href="home-box.html">Turingmaschinen</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="service.html">Übungen</a>
-                        </li>
-                        <li>
-                            <a href="about.html">About</a>
-                        </li>
-                        <li>
-                            <a href="team.html">Contact</a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
+                <li class="grid-item element-item p_one_third">
+                    <a class="item-link" href="/keller/">
+                        <img src="{{ site.url }}{{ site.baseurl }}/assets/img/backgrounds/keller.png"/>
+                        <div class="portfolio-text-holder">
+                            <p class="portfolio-title">
+                                Kellerautomaten
+                            </p>
+                            <p class="portfolio-desc">
+                                Fünf Themen
+                            </p>
+                        </div>
+                    </a>
+                </li>
+
+                <li class="grid-item element-item p_one_third">
+                    <a class="item-link" href="/turing/">
+                        <img src="{{ site.url }}{{ site.baseurl }}/assets/img/backgrounds/turing.png"/>
+                        <div class="portfolio-text-holder">
+                            <p class="portfolio-title">
+                                Turingmaschine
+                            </p>
+                            <p class="portfolio-desc">
+                                Zwei Themen
+                            </p>
+                        </div>
+                    </a>
+                </li>
+
+            </ul>
             <div class="clear"></div>
         </div>
-    </header>
 
-    <div id="content" class="site-content">
-        <div class="section-wrapper">
-
-            <h1 class="entry-title page-title block content-1170 center-relative">
-                Hallo, mein Freund. <br>
-                Das ist <b>Formale Systeme</b> Webscript.
-            </h1>
-
-            <img class="title-logo center-relative block" src="{{ site.url }}{{ site.baseurl }}/assets/img/utils/divider_01.png" alt="">
-
-            <div class="full-page-width center-relative">
-                <div id="portfolio-wrapper">
-                    <ul class="grid" id="portfolio-grid">
-                        <li class="grid-sizer"></li>
-
-                        <li class="grid-item element-item p_one_third">
-                            <a class="item-link" href="portfolio-3.html">
-                                <img src="{{ site.url }}{{ site.baseurl }}/assets/img/backgrounds/endliche.png" />
-                                <div class="portfolio-text-holder">
-                                    <p class="portfolio-title">
-                                        Endliche Automaten
-                                    </p>
-                                    <p class="portfolio-desc">
-                                        Fünf Themen
-                                    </p>
-                                </div>
-                            </a>
-                        </li>
-
-                        <li class="grid-item element-item p_one_third">
-                            <a class="item-link" href="portfolio-4.html">
-                                <img src="{{ site.url }}{{ site.baseurl }}/assets/img/backgrounds/keller.png" />
-                                <div class="portfolio-text-holder">
-                                    <p class="portfolio-title">
-                                        Kellerautomaten
-                                    </p>
-                                    <p class="portfolio-desc">
-                                        Fünf Themen
-                                    </p>
-                                </div>
-                            </a>
-                        </li>
-
-                        <li class="grid-item element-item p_one_third">
-                            <a class="item-link" href="portfolio-5.html">
-                                <img src="{{ site.url }}{{ site.baseurl }}/assets/img/backgrounds/turing.png"/>
-                                <div class="portfolio-text-holder">
-                                    <p class="portfolio-title">
-                                        Turingmaschine
-                                    </p>
-                                    <p class="portfolio-desc">
-                                        Zwei Themen
-                                    </p>
-                                </div>
-                            </a>
-                        </li>
-
-                    </ul>
-                    <div class="clear"></div>
-                </div>
-
-                <div class="block center-relative center-text more-posts-portfolio-holder">
-                    <p class="more-posts-portfolio">ÜBER DIESES PROJEKT</p>
-                </div>
-            </div>
-
-            <div class="content-1170 center-relative top-70">
-                <div class="one_half">
-                    <strong>Support</strong>
-                    <br>
-                    Wenn Sie diese Web-Seite cool finden, dann können Sie dem Entwickler ein Gefallen tun und ein Stern auf
-                    <a href="https://github.com/ArtemSer" target="_blank">Github Repo</a> setzen.
-                </div>
-
-                <div class="one_half last">
-                    <strong>License</strong>
-                    <br>
-                    You probably haven’t heard of them before they sold out scenester literally readymade. Trust fund Thundercats flexitarian,
-                    aesthetic Tumblr banjo freegan semiotics biodiesel master cleanse.
-                </div>
-                <div class="clear"></div>
-            </div>
+        <div class="block center-relative center-text more-posts-portfolio-holder">
+            <p class="more-posts-portfolio">ÜBER DIESES PROJEKT</p>
         </div>
     </div>
 
-    <footer class="footer">
-        <div class="footer-content center-relative">
-            <img class="footer-logo" src="{{ site.url }}{{ site.baseurl }}/assets/img/utils/divider_01.png">
-            <div class="copyright-holder content-1170 center-relative">
-                © 2019. Made by <a href="https://artemser.tk/">ArtemSer.</a>
-            </div>
-
-            <div class="social-holder content-1170 center-relative">
-                <a href="#">
-                    <span class="fa fa-twitter"></span>
-                </a>
-                <a href="#">
-                    <span class="fa fa-linkedin"></span>
-                </a>
-                <a href="#">
-                    <span class="fa fa-instagram"></span>
-                </a>
-                <a href="#">
-                    <span class="fa fa-github"></span>
-                </a>
-            </div>
+    <div class="content-1170 center-relative top-70">
+        <div class="one_half">
+            <strong>Support</strong>
+            <br>
+            Wenn Sie diese Web-Seite cool finden, dann können Sie dem Entwickler ein Gefallen tun und ein Stern auf
+            <a href="https://github.com/ArtemSer" target="_blank">Github Repo</a> setzen.
         </div>
-    </footer>
 
+        <div class="one_half last">
+            <strong>License</strong>
+            <br>
+            You probably haven’t heard of them before they sold out scenester literally readymade. Trust fund
+            Thundercats flexitarian,
+            aesthetic Tumblr banjo freegan semiotics biodiesel master cleanse.
+        </div>
+        <div class="clear"></div>
+    </div>
 </div>
-
-<!--Load JavaScript-->
-<script src="{{ site.url }}{{ site.baseurl }}/assets/js/jquery.js"></script>
-<script src='{{ site.url }}{{ site.baseurl }}/assets/js/jquery.smartmenus.min.js'></script>
-<script src='{{ site.url }}{{ site.baseurl }}/assets/js/imagesloaded.pkgd.js'></script>
-<script src='{{ site.url }}{{ site.baseurl }}/assets/js/isotope.pkgd.js'></script>
-<script src='{{ site.url }}{{ site.baseurl }}/assets/js/jquery.fitvids.js'></script>
-<script src='{{ site.url }}{{ site.baseurl }}/assets/js/swiper.min.js'></script>
-<script src='{{ site.url }}{{ site.baseurl }}/assets/js/main.js'></script>
-</body>
-</html>

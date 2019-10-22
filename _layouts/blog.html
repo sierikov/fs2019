@@ -1,23 +1,28 @@
 ---
 layout: core
 ---
-<div class="wrapper">
-    <!-- ARTICLE
-    ================================================== -->
-    <section class="subpage">
-        <div class="container">
-            <article class="news-article">
-                <figure class="article-image bottom_30">
-                    <img src="img/blog-article.jpg" alt="">
-                </figure>
-                <small class="category">{{page.type}}</small>
-                <h1 class="title">{{page.title}}</h1>
-                <div class="information bottom_30">{{page.data}}, <span>2019</span></div>
-                {{content}}
-            </article>
+<div class="blog-holder block center-relative bottom-150">
 
+    {% for article in page.articles %}
+
+    <article class="animate relative blog-item-holder">
+        <div class="entry-holder">
+            <div class="entry-info">
+                <div class="entry-date published">
+                    {{article.amount}} Subthemen
+                </div>
+            </div>
+            <h2 class="entry-title">
+                <a href="{{article.link}}">
+                    {{article.title}}
+                </a>
+            </h2>
         </div>
-    </section>
+        <div class="post-thumbnail">
+            <img src="{{ site.url }}{{ site.baseurl }}/assets/img/{{page.title}}/{{forloop.index}}.jpg" alt="">
+        </div>
+    </article>
 
+    {% endfor %}
 
 </div>

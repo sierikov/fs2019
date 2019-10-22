@@ -1,26 +1,54 @@
-<!-- HEADER
-==================================================-->
-<header class="fixed">
-    <!-- Logo -->
-    <a href="/" class="logo">
-        <img src="{{ site.url }}{{ site.baseurl }}/assets/img/logo.png" alt="">
-    </a>
-    <div class="nav-icon">
-        <span></span>
-        <span></span>
-        <span></span>
+
+<div class="doc-loader"></div>
+
+<header class="header-holder">
+    <div class="menu-wrapper center-relative relative">
+
+        <div class="header-logo">
+            <a href="/">
+                <img src="{{ site.url }}{{ site.baseurl }}/assets/img/logo.png" alt="Formale Systeme">
+            </a>
+        </div>
+
+        <div class="toggle-holder">
+            <div id="toggle">
+                <div class="first-menu-line"></div>
+                <div class="second-menu-line"></div>
+                <div class="third-menu-line"></div>
+            </div>
+        </div>
+
+        <div class="menu-holder">
+            <nav id="header-main-menu">
+                <ul class="main-menu sm sm-clean">
+                    <li class="menu-item-has-children">
+                        <a href="/" class="has-submenu">
+                            Themen
+                        </a>
+                        <ul class="sub-menu">
+                            <li>
+                                <a href="/endliche/">Endliche Automaten</a>
+                            </li>
+                            <li>
+                                <a href="/keller/">Kellerautomaten</a>
+                            </li>
+                            <li>
+                                <a href="/turing/">Turingmaschinen</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="/uebungen/">Übungen</a>
+                    </li>
+                    <li>
+                        <a href="/ueber/">Über uns</a>
+                    </li>
+                    <li>
+                        <a href="/kontakt/">Kontakt</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="clear"></div>
     </div>
-    <!-- Navigation -->
-    <nav>
-        <ul>
-            {% assign links = site.data.navigation %}
-            {% for link in links %}
-            <li>
-                <a href="{{ site.url }}{{ site.baseurl }}{{ link.url }}">
-                    <span data-hover="{{ link.title }}">{{ link.title }}</span>
-                </a>
-            </li>
-            {% endfor %}
-        </ul>
-    </nav>
 </header>
