@@ -1,0 +1,81 @@
+---
+layout: core
+addons: single single-post
+---
+<div id="content" class="site-content">
+  <article>
+
+    <div class="single-post-header-content content-1170 center-relative">
+      <img src="{{page.image}}" alt="">
+    </div>
+
+    <div class="post-wrapper center-relative">
+      <h1 class="entry-title">{{page.title}}</h1>
+      <div class="single-content-wrapper content-960 center-relative">
+        <div class="post-info-wrapper">
+          <div class="entry-info">
+            <div>
+              <div class="text-holder">
+                LANGE
+              </div>
+              <div class="author-nickname">
+                  {{page.length}} Seiten
+              </div>
+            </div>
+            <div>
+              <div class="text-holder">
+                POSITION
+              </div>
+              <div class="entry-date published">
+                {{page.position}} of 12
+              </div>
+            </div>
+            <div>
+              <div class="text-holder">
+                THEMA
+              </div>
+              <div class="cat-links">
+                <ul>
+                  <li>
+                    <a href="{{page.thema.link}}">{{page.thema.name}}</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="entry-content">
+          {{content}}
+
+          <div class="tags-holder">
+            <a href="#" rel="tag">BLOGGING</a>
+            <a href="#" rel="tag">INSPIRATION</a>
+            <a href="#" rel="tag">WEBSITE</a>
+          </div>
+
+        </div>
+        <div class="clear"></div>
+      </div>
+    </div>
+  </article>
+  <div class="nav-links">
+    <div class="content-1170 center-relative">
+      <div class="nav-previous">
+        <a href="#" rel="prev">
+          Permanence of the stars birth prime
+        </a>
+        <div class="arrow-holder">←</div>
+        <div class="clear"></div>
+      </div>
+
+      <div class="nav-next">
+        <a href="#" rel="next">
+          Hearts of the stars gathered
+        </a>
+        <div class="arrow-holder">→</div>
+        <div class="clear"></div>
+      </div>
+    </div>
+  </div>
+</div>

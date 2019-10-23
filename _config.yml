@@ -14,4 +14,4 @@ defaults:
     path: ""
     type: "pages"
   values:
-    title: "Formale Systeme"
+    addons: "single single-post"
