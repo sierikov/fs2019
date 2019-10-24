@@ -4,13 +4,13 @@ title: Nichtdeterministische endliche Automaten
 thema:
   link: /endliche/
   name: Endliche Automaten
-length: 10
+length: "05"
 position: 1
 ---
 <p>
   Wir betrachten zunächst den etwas allgemeineren Begriff des <i>Transitionssystems</i>.
 </p>
-<h4 id="1.1">Definition 1.1 (Transitionssystems)</h4>
+<h4 id="1-1">Definition 1.1 (Transitionssystems)</h4>
 <p>
   Ein <i>Transitionssystems</i> ist von der Form $\mathcal A = (\mathcal Q, \Sigma, \mathcal I, \Delta, \mathcal F )$,
   wobei:
@@ -19,30 +19,104 @@ position: 1
   <li>$\mathcal Q$ - eine Menge von Zuständen ist (nicht notwendigerweise endlich!)</li>
   <li>$\Sigma$ - endliches alphabet</li>
   <li>$\mathcal I \subseteq \mathcal Q$ - eine Menge von Anfangzuständen</li>
-  <li>$\Delta \subseteq \mathcal Q \times \Sigma$ - eine Übergangsrelation (Transitionsrelation)</li>
+  <li>$\Delta \subseteq \mathcal Q \times \Sigma^* \times \mathcal Q$ - eine Übergangsrelation (Transitionsrelation)</li>
+  <li>$\mathcal F \subseteq \mathcal Q$ - eine Menge von Endzuständen ist.</li>
 </ul>
-<h3>Test</h3>
 <p>
-  Galaxies network of wormholes birth extraplanetary Apollonius of Perga adipisci velit! Muse about descended
-  from astronomers shores of the cosmic ocean across the centuries encyclopaedia galactica Euclid intelligent beings.
-  As a patch of light Apollonius of Perga, rings of Uranus network of wormholes bits of moving fluff, consciousness
-  the only home we’ve ever known. Galaxies, corpus callosum radio telescope. Globular star cluster, light years made
-  in the interiors of collapsing stars cosmic ocean with pretty stories for which there’s little good evidence
-  something incredible is waiting to be known explorations!
+  Ein <i>endlicher Automat</i> hat endlich viele Zustände und nur einen Anfangszustand.
+</p>
+<h4 id="1-2">Definition 1.2 (Nichtdeterministischer endlicher Automat)</h4>
+<p>
+  Ein Transitionssystem $\mathcal A = (\mathcal Q, \Sigma, \mathcal I, \Delta, \mathcal F )$ nennt man
+  <b>nichtdeterministischer endlicher Automat</b> (NEA), wenn
+  $|\mathcal Q| < \infty $ und $|\mathcal I| = 1$.
+</p>
+<p>
+  Anstelle von $(\mathcal Q, \Sigma, \{q_0\}, \Delta, \mathcal F)$ schreiben wir
+  $(\mathcal Q, \Sigma, q_0, \Delta, \mathcal F)$
+</p>
+<h4 id="1-3">Beispiel 1.3</h4>
+<p>
+  Der NEA $\mathcal A = (\mathcal Q, \Sigma, \mathcal I, \Delta, \mathcal F )$ mit den
+  Komponenten.
+</p>
+<ul style="overflow-x: auto;">
+  <li>$\mathcal Q = \{q_0, q_1, q_2\}$</li>
+  <li>$\Sigma = \{a, b\}$</li>
+  <li>$\Delta = \{(q_0, a, q_1), (q_1, b, q_2), (q_2, a, q_2), (q_2, b, q_2)\}$</li>
+</ul>
+<p>wird graphisch dargestellt als:</p>
+<img src="/assets/img/diagrams/endliche/nea/1.3.svg" alt="Beispiel für 1.2">
+<h4 id="1-4"> Definition 1.4 (Pfad in Transitionssystem)</h4>
+<p>
+  Ein <i>Pfad</i> in einem Transitionssystem $\mathcal A$ ist eine Folge
+  $\pi = (p_0, a, p_1), (p_1, a_2, p_2) ... (q_{n-1}, a_n, q_n)$ mit
+  $(p_i, a_{i+1}, p_{i+1}) \in \Delta$ für $i = 0, ..., n-1$.
+  $\pi$ ist ein Pfad von $p$ nach $q$, wenn $p_0 = p$ und $p_n = q$.
+</p>
+<p>
+  Die <i>Beschriftung</i> des Pfades $\pi$ ist das Wort $a_1 .. a_n$.
+  Die <i>Länge</i> des Pfaged $\pi$ ist $n$. Für $n=0$ sprechen wir vom
+  <i>leeren Pfad</i>, welcher die Beschriftud $\varepsilon$ hat.
+</p>
+<p>
+  Die Existenz eines Pfades in $\mathcal A$ von $p$ nach $q$ mit Beschriftung $w$
+  beschreiben wir durch
+</p>
+$$
+\pi = p\enspace {\overset w \longrightarrow}_{\mathcal A} \enspace q
+$$
+<p>
+  Fùr Mengen $Q_1, Q_2 \subseteq Q$ heißt $Q_1 \enspace {\overset w \longrightarrow}_{\mathcal A} \enspace Q_2 $,
+  dass es Zustände $p_1 \in Q_1 $ und $p_2 \in Q_2$ gibt mit
+  $p_1 \enspace {\overset w \longrightarrow}_{\mathcal A} \enspace p_2 $.
 </p>
 
-<blockquote>
-  <p>
-    Birth dispassionate terrestrial for observer star stuff harvesting light something incredible is
-    prominant waiting to be known descended from astronomers billions.
-  </p>
-</blockquote>
-
 <p>
-  Brain is the seed of intelligence ship of the imagination hearts of the stars realm of the galaxies. At the edge of
-  forever. Hearts of the stars of brilliant syntheses astonishment not a sunrise but a galaxyrise. Finite but unbounded
-  how far away, corpus callosum nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in
-  ea voluptate velit esse quam nihil molestiae consequatur. Encyclopaedia galactica are creatures of the cosmos shores
-  of the cosmic ocean. Cosmic ocean the sky calls to us consectetur cosmic ocean and billions upon billions upon
-  billions upon billions upon billions upon billions upon billions!
+  Für NEA aus <a href="#1-3">Beispiel 1.3</a> gilt für alle
+  $w \in \{a,b\}^*: q_0 \enspace {\overset{abw} \longrightarrow}_{\mathcal A} \enspace q_2 $.
+</p>
+
+<h4 id="1-5">Definition 1.5 (Akzeptierte Sprache)</h4>
+<p>
+  Das Transitionssystem $\mathcal A = (\mathcal Q, \Sigma, \mathcal I, \Delta, \mathcal F )$
+  <i>akzeptiert</i> (erkennt) das wort $w \in \Sigma^*$ <u>genau dann, wenn</u>
+  $\mathcal I \enspace {\overset{w} \longrightarrow}_{\mathcal A} \enspace \mathcal F$
+  gilt. Die von $\mathcal A$ <i>akzeptierte (erkannte) Sprache </i> ist
+  $L(\mathcal A) = \{w \in \Sigma^* \enspace | \enspace \mathcal A$ akzeptiert $w\}$.
+</p>
+<p>
+  Für NEA aus <a href="#1-3">Beispiel 1.3</a> ist $L(\mathcal A) = \{abw \enspace | \enspace w \in \Sigma^* \}$,
+  d.h. $\mathcal A$ akzeptiert (erkennt) genau die Wörter über $\Sigma = \{a, b\}$, welche mit $ab$ beginnen.
+</p>
+<h4 id="1-6">Definition 1.6 (Erkennbare Sprache)</h4>
+<p>
+  Eine Sprache $L \subseteq \Sigma^*$ heißt <i>erkennbar</i>, wenn es einen NEA $\mathcal A$ gibt mit
+  $L = L(\mathcal A)$. Da wir uns bei einem Transitionssystem im Allgemeinen nur für die akzeptierten Sprachen interes-
+  sieren, bezeichnen wir zwei Transitionssysteme als äquivalent, wenn sie dieselbe Sprache akzeptieren.
+</p>
+<h4 id="1-7">Beispiel 1.7</h4>
+<p>
+  $L = \{w \in \{a, b\}^* \enspace | \enspace ab$ ist <b>nicht</b> Infix von $w\}$
+  ist erkennbar, denn $L$ wird z. B. von dem folgenden Automaten akzeptiert:
+</p>
+<img src="/assets/img/diagrams/endliche/nea/1.7.svg" alt="Beispiel für 1.7">
+<p>
+  Für manche Konstruktionen ist es günstig, auch endliche Automaten zu betrachten, bei denen Übergänge mit Wörtern
+  beschriftet sind.
+</p>
+<h4 id="1-8">Definition 1.8 (NEA mit Wortübergängen)</h4>
+<p>
+  1. Ein <i>NEA mit Wortübergängen</i> hat die Form $\mathcal A = (\mathcal Q, \Sigma, q_0, \Delta, \mathcal F)$,
+  wobei $\mathcal Q$, $\Sigma$, $q_0$, $\mathcal F$. wie beim
+  <a href="#1-1">NEA definiert sind</a>  und $\Delta \subseteq \mathcal Q \times \Sigma^* \times \mathcal Q$
+  eine endliche Menge von Wortübergängen ist.
+</p>
+<p>
+  2. Ein $\varepsilon$-NEA ist ein NEA mit Wortübergängen, wobei für alle $(q, w, q') \in \Delta$ gilt:
+  $|w| \leq 1$ (d.h. $w \in \Sigma$ oder $w = \varepsilon$).
+</p>
+<p>
+  Pfade, Pfadbeschriftungen und akzeptierte Sprache werden entsprechend wie für NEAs definiert. Zum Beispiel hat der
+  Pfad
 </p>

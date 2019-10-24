@@ -210,3 +210,7 @@ sub {
   list-style-type: disc;
   margin: 0 0 14px 17px;
 }
+
+mjx-container[jax="CHTML"][display="true"] mjx-math {
+  font-size: 2em;
+}
