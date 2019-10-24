@@ -77,6 +77,10 @@ blockquote:before {
   margin-bottom: 0;
   transform: translateY(-50%);
 }
+blockquote.satz:before{
+  color: #ff2323;
+}
+
 
 body p,
 body pre {

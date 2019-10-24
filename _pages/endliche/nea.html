@@ -50,7 +50,7 @@ position: 1
 <h4 id="1-4"> Definition 1.4 (Pfad in Transitionssystem)</h4>
 <p>
   Ein <i>Pfad</i> in einem Transitionssystem $\mathcal A$ ist eine Folge
-  $\pi = (p_0, a, p_1), (p_1, a_2, p_2) ... (q_{n-1}, a_n, q_n)$ mit
+  $\pi = (p_0, a, p_1), (p_1, a_2, p_2) ... (p_{n-1}, a_n, p_n)$ mit
   $(p_i, a_{i+1}, p_{i+1}) \in \Delta$ für $i = 0, ..., n-1$.
   $\pi$ ist ein Pfad von $p$ nach $q$, wenn $p_0 = p$ und $p_n = q$.
 </p>
@@ -67,7 +67,7 @@ $$
 \pi = p\enspace {\overset w \longrightarrow}_{\mathcal A} \enspace q
 $$
 <p>
-  Fùr Mengen $Q_1, Q_2 \subseteq Q$ heißt $Q_1 \enspace {\overset w \longrightarrow}_{\mathcal A} \enspace Q_2 $,
+  Für Mengen $Q_1, Q_2 \subseteq Q$ heißt $Q_1 \enspace {\overset w \longrightarrow}_{\mathcal A} \enspace Q_2 $,
   dass es Zustände $p_1 \in Q_1 $ und $p_2 \in Q_2$ gibt mit
   $p_1 \enspace {\overset w \longrightarrow}_{\mathcal A} \enspace p_2 $.
 </p>
@@ -118,5 +118,47 @@ $$
 </p>
 <p>
   Pfade, Pfadbeschriftungen und akzeptierte Sprache werden entsprechend wie für NEAs definiert. Zum Beispiel hat der
-  Pfad
+  Pfad $(q_0, aa, q_0)$$(q_0, aa, q_0)$$(q_0, \varepsilon, q_1)$$(q_1, bb, q_1)$ die Beschriftung
+  $aa \cdot aa \cdot \varepsilon \cdot bb = aaaabb$.
 </p>
+<h4>Satz 1.9 (NEA mit Wortübergängen nicht stärker als NEA)</h4>
+<blockquote class="satz" id="1-9">
+  <p>
+    Zu jedem NEA mit Wortübergängen kann man effektiv einen äquivalenten NEA ohne Wortübergänge konstruieren.
+  </p>
+</blockquote>
+<h4>Lemma 1.10 (NEA mit Wortübergängen nicht stärker als ε-NEA)</h4>
+<blockquote id="1-10">
+  <p>
+    Zu jedem NEA mit Wortübergängen kann man effektiv einen äquivalenten ε-NEA konstruieren.
+  </p>
+</blockquote>
+
+<h4 id="1-11">Beispiel 1.11</h4>
+<p>
+  Der NEA mit Wortübergängen, der durch die folgende Darstellung gegeben ist:
+</p>
+<img src="/assets/img/diagrams/endliche/nea/1.11.svg" alt="Beispiel für 1.11">
+<p>
+  wird überführt in einen äquivalenten ε-NEA:
+</p>
+<img src="/assets/img/diagrams/endliche/nea/1.11.2.svg" alt="Beispiel für 1.11.2">
+
+<h4>Lemma 1.12 (ε-NEA nicht stärker als NEA)</h4>
+<blockquote id="1-12">
+  <p>
+    Zu jedem ε-NEA kann man effektiv einen äquivalenten NEA konstruieren.
+  </p>
+</blockquote>
+<p>
+  <b>Lemma 1.12</b> kann man auch verwenden, wenn man zeigen will, dass es zu jedem <i>endlichen</i> Transitionssystem
+  $\mathcal A = (\mathcal Q, \Sigma, \mathcal I, \Delta, \mathcal F )$
+  einen äquivalenten NEA $\mathcal A'$ gibt. Man definiert für einen neuen Zustand
+  $q \not\in \mathcal Q$ einen ε-NEA $\mathcal A'' = (\mathcal Q \cup \{q_0\}, \Sigma, q_0, \Delta'', \mathcal F )$
+  mit $ \Delta'' = \Delta \cup \{(q_0, \varepsilon, q) \enspace | \enspace q \in \mathcal I \}$
+</p>
+<p>
+  $\mathcal A''$ ist äquivalent zu $\mathcal A$. Man erhält nun $\mathcal A'$ aus $\mathcal A''$
+</p>
+
+
