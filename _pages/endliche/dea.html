@@ -59,55 +59,54 @@ $$
 <img src="/assets/img/diagrams/endliche/dea/2.2.svg" alt="Beispiel für 2.2">
 <h4 id="2-3">Definition 2.3 (Kanonische Fortsetzung der Übergangsfunktion δ)</h4>
 <p>
-  Die kanonische Fortsetzung von 
-  Der NEA  mit den
-  Komponenten.
+  Die <i>kanonische Fortsetzung von $\delta : \mathcal Q \times \Sigma \rightarrow \mathcal Q$
+  auf eine Funktion $\delta^* : \mathcal Q \times \Sigma^* \rightarrow \mathcal Q$</i> wird induktiv
+  (über die Wortlänge) definiert:
 </p>
 <ul style="overflow-x: auto;">
-  <li>$\mathcal Q = \{q_0, q_1, q_2\}$</li>
-  <li>$\Sigma = \{a, b\}$</li>
-  <li>$\Delta = \{(q_0, a, q_1), (q_1, b, q_2), (q_2, a, q_2), (q_2, b, q_2)\}$</li>
+  <li>$\delta^* (q, \varepsilon) := q$</li>
+  <li>$\delta^* (q, wa) := \delta ( \delta^* (q, w), a)$</li>
 </ul>
-<p>wird graphisch dargestellt als:</p>
-<img src="/assets/img/diagrams/endliche/nea/1.3.svg" alt="Beispiel für 1.2">
-<h4 id="1-4"> Definition 1.4 (Pfad in Transitionssystem)</h4>
 <p>
-  Ein <i>Pfad</i> in einem Transitionssystem $\mathcal A$ ist eine Folge
-  $\pi = (p_0, a, p_1), (p_1, a_2, p_2) ... (p_{n-1}, a_n, p_n)$ mit
-  $(p_i, a_{i+1}, p_{i+1}) \in \Delta$ für $i = 0, ..., n-1$.
-  $\pi$ ist ein Pfad von $p$ nach $q$, wenn $p_0 = p$ und $p_n = q$.
+  Der Einfachheit halber werden wir in Zukunft auch für Wörter $w$ die Schreibweise $\delta(q,w)$
+  anstelle von $\delta^*(q,w)$ verwenden.
 </p>
+<h6>Beachte: </h6>
 <p>
-  Die <i>Beschriftung</i> des Pfades $\pi$ ist das Wort $a_1 .. a_n$.
-  Die <i>Länge</i> des Pfaged $\pi$ ist $n$. Für $n=0$ sprechen wir vom
-  <i>leeren Pfad</i>, welcher die Beschriftud $\varepsilon$ hat.
+  Für einen DEA $ \mathcal A = (\mathcal Q, \Sigma, q_0, \delta, \mathcal F )$ gilt:
 </p>
+<ul>
+  <li>
+    $\delta(q,w) = q'$ - <u>gdw.</u> $q'$ ist der eindeutige Zustand mit
+    $q \enspace {\overset w \longrightarrow}_{\mathcal A} \enspace q' $
+  </li>
+  <li>
+    $L(\mathcal A) = \{w \in \Sigma^* \enspace | \enspace \delta(q_0, w) \in \mathcal F \}$
+  </li>
+  <li>
+    $\delta(q, uv) = \delta(\delta(q, u), v)$
+  </li>
+</ul>
 <p>
-  Die Existenz eines Pfades in $\mathcal A$ von $p$ nach $q$ mit Beschriftung $w$
-  beschreiben wir durch
+  Wir zeigen nun, dass die bei der Definition von DEAs gemachten Einschränkungen
+  (Existenz und Eindeutigkeit von Übergängen) keine <u>echten</u> Einschränkungen sind
 </p>
-$$
-\pi = p\enspace {\overset w \longrightarrow}_{\mathcal A} \enspace q
-$$
-<p>
-  Für Mengen $Q_1, Q_2 \subseteq Q$ heißt $Q_1 \enspace {\overset w \longrightarrow}_{\mathcal A} \enspace Q_2 $,
-  dass es Zustände $p_1 \in Q_1 $ und $p_2 \in Q_2$ gibt mit
-  $p_1 \enspace {\overset w \longrightarrow}_{\mathcal A} \enspace p_2 $.
-</p>
+<h4>Satz 2.4 (Rabin/Scott)</h4>
+<blockquote class="satz" id="1-9">
+  <p>
+    Zu jedem NEA kann man effektiv einen äquivalenten DEA konstruieren.
+  </p>
+</blockquote>
 
 <p>
-  Für NEA aus <a href="#1-3">Beispiel 1.3</a> gilt für alle
-  $w \in \{a,b\}^*: q_0 \enspace {\overset{abw} \longrightarrow}_{\mathcal A} \enspace q_2 $.
+  Damit folgt, dass NEAs und DEAs dieselbe Klasse von Sprachen akzeptieren.
 </p>
 
-<h4 id="1-5">Definition 1.5 (Akzeptierte Sprache)</h4>
+<h4 id="2-5">Beispiel 2.5</h4>
 <p>
-  Das Transitionssystem $\mathcal A = (\mathcal Q, \Sigma, \mathcal I, \Delta, \mathcal F )$
-  <i>akzeptiert</i> (erkennt) das wort $w \in \Sigma^*$ <u>genau dann, wenn</u>
-  $\mathcal I \enspace {\overset{w} \longrightarrow}_{\mathcal A} \enspace \mathcal F$
-  gilt. Die von $\mathcal A$ <i>akzeptierte (erkannte) Sprache </i> ist
-  $L(\mathcal A) = \{w \in \Sigma^* \enspace | \enspace \mathcal A$ akzeptiert $w\}$.
+  Der NEA $\mathcal A$:
 </p>
+<img src="/assets/img/diagrams/endliche/dea/2.5.svg" alt="Beispiel für 2.5">
 <p>
   Für NEA aus <a href="#1-3">Beispiel 1.3</a> ist $L(\mathcal A) = \{abw \enspace | \enspace w \in \Sigma^* \}$,
   d.h. $\mathcal A$ akzeptiert (erkennt) genau die Wörter über $\Sigma = \{a, b\}$, welche mit $ab$ beginnen.
