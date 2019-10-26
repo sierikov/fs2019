@@ -48,12 +48,6 @@ addons: single single-post
         <div class="entry-content">
           {{content}}
 
-          <div class="tags-holder">
-            <a href="#" rel="tag">BLOGGING</a>
-            <a href="#" rel="tag">INSPIRATION</a>
-            <a href="#" rel="tag">WEBSITE</a>
-          </div>
-
         </div>
         <div class="clear"></div>
       </div>
@@ -61,21 +55,24 @@ addons: single single-post
   </article>
   <div class="nav-links">
     <div class="content-1170 center-relative">
+      {% if page.prv %}
       <div class="nav-previous">
-        <a href="#" rel="prev">
-          Permanence of the stars birth prime
+        <a href="{{page.thema.link}}{{page.prv.link}}" rel="prev">
+          {{page.prv.title}}
         </a>
         <div class="arrow-holder">←</div>
         <div class="clear"></div>
       </div>
-
+      {% endif %}
+      {% if page.next %}
       <div class="nav-next">
-        <a href="#" rel="next">
-          Hearts of the stars gathered
+        <a href="{{page.thema.link}}{{page.nex.link}}" rel="next">
+          {{page.nex.title}}
         </a>
         <div class="arrow-holder">→</div>
         <div class="clear"></div>
       </div>
+      {% endif %}
     </div>
   </div>
 </div>
