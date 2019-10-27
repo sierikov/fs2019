@@ -108,40 +108,51 @@ $$
 </p>
 <img src="/assets/img/diagrams/endliche/dea/2.5.svg" alt="Beispiel für 2.5">
 <p>
-  Für NEA aus <a href="#1-3">Beispiel 1.3</a> ist $L(\mathcal A) = \{abw \enspace | \enspace w \in \Sigma^* \}$,
-  d.h. $\mathcal A$ akzeptiert (erkennt) genau die Wörter über $\Sigma = \{a, b\}$, welche mit $ab$ beginnen.
+  wird mit der Potenzmengenkonstruktion transformiert in den DEA $\mathcal A'$
 </p>
-<h4 id="1-6">Definition 1.6 (Erkennbare Sprache)</h4>
+<img src="/assets/img/diagrams/endliche/dea/2.5.2.svg" alt="Beispiel für 2.5.2">
 <p>
-  Eine Sprache $L \subseteq \Sigma^*$ heißt <i>erkennbar</i>, wenn es einen NEA $\mathcal A$ gibt mit
-  $L = L(\mathcal A)$. Da wir uns bei einem Transitionssystem im Allgemeinen nur für die akzeptierten Sprachen interes-
-  sieren, bezeichnen wir zwei Transitionssysteme als äquivalent, wenn sie dieselbe Sprache akzeptieren.
-</p>
-<h4 id="1-7">Beispiel 1.7</h4>
-<p>
-  $L = \{w \in \{a, b\}^* \enspace | \enspace ab$ ist <b>nicht</b> Infix von $w\}$
-  ist erkennbar, denn $L$ wird z. B. von dem folgenden Automaten akzeptiert:
-</p>
-<img src="/assets/img/diagrams/endliche/nea/1.7.svg" alt="Beispiel für 1.7">
-<p>
-  Für manche Konstruktionen ist es günstig, auch endliche Automaten zu betrachten, bei denen Übergänge mit Wörtern
-  beschriftet sind.
-</p>
-<h4 id="1-8">Definition 1.8 (NEA mit Wortübergängen)</h4>
-<p>
-  1. Ein <i>NEA mit Wortübergängen</i> hat die Form $\mathcal A = (\mathcal Q, \Sigma, q_0, \Delta, \mathcal F)$,
-  wobei $\mathcal Q$, $\Sigma$, $q_0$, $\mathcal F$. wie beim
-  <a href="#1-1">NEA definiert sind</a>  und $\Delta \subseteq \mathcal Q \times \Sigma^* \times \mathcal Q$
-  eine endliche Menge von Wortübergängen ist.
+  Nachteil an dieser Konstruktion ist, dass die Zustandsmenge <i>exponentiell</i> vergrößert
+  wird. Im Allgemeinen kann man dies nicht vermeiden, in manchen Fällen kommt man
+  aber doch mit weniger Zuständen aus. Wir werden im Folgenden ein Verfahren angeben,
+  welches zu einem gegebenen DEA einen äquivalenten DEA mit minimaler Zustandszahl,
+  also einen reduzierten DEA konstruiert. Dieses Verfahren besteht aus 2 Schritten
 </p>
 <p>
-  2. Ein $\varepsilon$-NEA ist ein NEA mit Wortübergängen, wobei für alle $(q, w, q') \in \Delta$ gilt:
-  $|w| \leq 1$ (d.h. $w \in \Sigma$ oder $w = \varepsilon$).
+  <b>1 Schritt</b>: Eliminieren unerreichbarer Zustände
+</p>
+<h4 id="2-6">
+  Definition 2.6 (Erreichbarkeit eines Zustandes)
+</h4>
+<p>
+  Ein Zustand $q$ des DEA $ \mathcal A = (\mathcal Q, \Sigma, q_0, \delta, \mathcal F )$
+  heißt <i>erreichbar</i>  falls es ein Wort $w \in \Sigma^*$ gibt mit
+  $\delta (q_0, w) = q$.  Sonst heißt $q$  <i>unerreichbar</i>.
 </p>
 <p>
-  Pfade, Pfadbeschriftungen und akzeptierte Sprache werden entsprechend wie für NEAs definiert. Zum Beispiel hat der
-  Pfad $(q_0, aa, q_0)$$(q_0, aa, q_0)$$(q_0, \varepsilon, q_1)$$(q_1, bb, q_1)$ die Beschriftung
-  $aa \cdot aa \cdot \varepsilon \cdot bb = aaaabb$.
+  Da für die akzeptierte Sprache nur Zustände wichtig sind, welche von $q_0$ erreicht werden,
+  erhält man durch Weglassen unerreichbarer Zustände einen äquivalenten Automaten
+  $ \mathcal A_0 = (\mathcal Q_0, \Sigma, q_0, \delta_0, \mathcal F_0 )$
+  mit
+</p>
+<ul>
+  <li>$\mathcal Q_0 = \{q\in \mathcal Q \enspace | \enspace q $ ist erreichbar $\}$</li>
+  <li>$\delta_0 = \delta \enspace |_{Q_0 \times \Sigma}$<br>
+    <b>Beachte:</b> für $q \in \mathcal{Q_0}$ und $a \in \Sigma$ ist auch $\delta(q, a) \in \mathcal{Q_0}$!
+  </li>
+  <li>$\mathcal{F_0} = \mathcal F \cap \mathcal{Q_0} $</li>
+</ul>
+<h4 id="2-5-2">Beispiel 2.5 (Fortsetzung)</h4>
+<p>
+  Im Automaten $\mathcal A'$ von <a href="#2-5"> Beispiel 2.5</a> sind die Zustände
+  $\{2\}$ und $\emptyset$ nicht erreichbar. Durch Weglassen dieser Zustände erhält
+  man den DEA $\mathcal{A_0}'$:
+</p>
+<img src="/assets/img/diagrams/endliche/dea/2.5.3.svg" alt="Beispiel für 2.5.3">
+<p>
+  Bei der Potenzmengenkonstruktion kann man die Betrachtung unerreichbarer Elemente
+  von $2^{\mathcal Q}$ vermeiden, indem man mit $\{q_0\}$ beginnt und nur die davon
+  erreichbaren Mengen sukzessive konstruiert.
 </p>
 <h4>Satz 1.9 (NEA mit Wortübergängen nicht stärker als NEA)</h4>
 <blockquote class="satz" id="1-9">
