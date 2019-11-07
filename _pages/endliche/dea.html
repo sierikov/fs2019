@@ -92,16 +92,14 @@ $$
   (Existenz und Eindeutigkeit von Übergängen) keine <u>echten</u> Einschränkungen sind
 </p>
 <h4>Satz 2.4 (Rabin/Scott)</h4>
-<blockquote class="satz" id="1-9">
+<blockquote class="satz" id="2-4">
   <p>
     Zu jedem NEA kann man effektiv einen äquivalenten DEA konstruieren.
   </p>
 </blockquote>
-
 <p>
   Damit folgt, dass NEAs und DEAs dieselbe Klasse von Sprachen akzeptieren.
 </p>
-
 <h4 id="2-5">Beispiel 2.5</h4>
 <p>
   Der NEA $\mathcal A$:
@@ -154,54 +152,95 @@ $$
   von $2^{\mathcal Q}$ vermeiden, indem man mit $\{q_0\}$ beginnt und nur die davon
   erreichbaren Mengen sukzessive konstruiert.
 </p>
-<h4>Satz 1.9 (NEA mit Wortübergängen nicht stärker als NEA)</h4>
-<blockquote class="satz" id="1-9">
-  <p>
-    Zu jedem NEA mit Wortübergängen kann man effektiv einen äquivalenten NEA ohne Wortübergänge konstruieren.
-  </p>
+<p>
+  <b>2. Schritt</b>: Zusammenfassen äquivalenter Zustände
+</p>
+<p>
+  Ein DEA ohne unerreichbare Zustände muss noch nicht minimal sein, da er noch verschiedene Zustände enthalten kann, die
+  sich „gleich“ verhalten in Bezug auf die akzeptierte
+  Sprache.
+</p>
+<h4 id="2-7">Beispiel 2.7</h4>
+<p>
+  Der folgende DEA erkennt dieselbe Sprache wie der DEA aus <a href="#2-2">Beispiel 2.2</a>, hat aber einen
+  Zustand mehr. Dies kommt daher, dass $q_0$ und $q_2$ äquivalent sind.
+</p>
+<img src="/assets/img/diagrams/endliche/dea/2.7.svg" alt="Beispiel für 2.7">
+<h4 id="2-8">Definition 2.8 (Äquivalenz von Zuständen)</h4>
+<p>
+  Es sie $ \mathcal A = (\mathcal Q, \Sigma, q_0, \delta, \mathcal F )$ ein DEA. Für $q \in \mathcal Q$
+  sei $ \mathcal A_q = (\mathcal Q, \Sigma, q, \delta, \mathcal F )$. Zwei Zustände $q, q' \in \mathcal Q$
+  heißen $\mathcal A$-<i>äquivalent</i> ($q \sim_{\mathcal A} q'$) <u>gdw.</u> $L(\mathcal A_q) = L(\mathcal A_{q'})$.
+</p>
+<h4 id="2-9">Lemma 2.9 (Eigenschaften von $\sim_{\mathcal A}$)</h4>
+<blockquote >
+  <ul>
+    <li>$\sim_{\mathcal A}$ ist eine Äquivalenzrelation auf $\mathcal Q$, d.h. reflexiv, transitiv und symmetrisch </li>
+    <li>
+      $\sim_{\mathcal A}$ ist verträglich mit der Übergangsfunktion, d.h.
+      $q \sim_{\mathcal A} q' \Rightarrow 	\forall a \in \Sigma : \delta(q,a) \sim_{\mathcal A} \delta(q',a) $
+    </li>
+    <li>$\sim_{\mathcal A}$ kann effektiv bestimmt werden.</li>
+  </ul>
 </blockquote>
-<h4>Lemma 1.10 (NEA mit Wortübergängen nicht stärker als ε-NEA)</h4>
-<blockquote id="1-10">
-  <p>
-    Zu jedem NEA mit Wortübergängen kann man effektiv einen äquivalenten ε-NEA konstruieren.
-  </p>
+<p>Die $\sim_{\mathcal A}$-Äquivalenzklasse eines Zustands $q \in \mathcal Q$ notieren wir mit
+  $ \tilde q := \{q' \in Q \enspace | \enspace q \sim_{\mathcal A} q' \}$.
+</p>
+<h4 id="2-7-2">Beispiel 2.7 (Fortsetzung)</h4>
+<p>Für den Automaten aus <a href="#2-7">Beispiel 2.7</a> gilt:</p>
+<ul>
+  <li>$\sim_{\mathcal 0}$ hat die Klassen $\mathcal F = \{q_0, q_1, q_2\}$ und ${\mathcal Q} \setminus {\mathcal F} = \{q_3\}$ </li>
+  <li>$\sim_{\mathcal 1}$ hat die Klassen $\{q_1\}, \{q_0, q_2\}, \{q_3\}$ <br>
+    Zum Beispiel ist $\delta(q_0, b) = \delta(q_2, b) \in \mathcal F$ und $ \delta (q_1, b) \not\in \mathcal F$.
+  </li>
+  <li>$\sim_{\mathcal 2} \ = \ \sim_{\mathcal 1} \ = \ \sim_{\mathcal A}$</li>
+</ul>
+<h4 id="2-10">Definition 2.10 (Quotientenautomat)</h4>
+<p>
+  Der <i>Quotientenautomat</i> $ \widetilde {\mathcal A} = (\widetilde{\mathcal Q}, \Sigma, \tilde{q_0}, \tilde{\delta}, \widetilde{\mathcal F})$
+  <i>zu</i> $\mathcal A = (\mathcal Q, \Sigma, q_0, \delta, \mathcal F )$ ist definiert durch:
+</p>
+<ul>
+  <li>$ \widetilde {\mathcal Q} := \{ \tilde q \enspace | \enspace q \in Q \}$</li>
+  <li>$ \widetilde \delta (\tilde q, a) := \widetilde{\delta(q,a)}$ (<a href="#2-9">Lemma</a>)</li>
+  <li>$ \widetilde {\mathcal F} := \{\tilde q \enspace | \enspace q \in \mathcal F \}$ (<a href="#2-8">Definition</a>) </li>
+</ul>
+<h4 id="2-11">Lemma 2.11</h4>
+<blockquote >
+  <p> $\widetilde {\mathcal A}$ ist äquivalent zu $\mathcal A$</p>
 </blockquote>
-
-<h4 id="1-11">Beispiel 1.11</h4>
+<h4 id="2-12">Definition 2.12 (Reduzierter Automat zu einem DEA)</h4>
 <p>
-  Der NEA mit Wortübergängen, der durch die folgende Darstellung gegeben ist:
+  Für einen DEA $\mathcal A$ bezeichnet $\mathcal A_{red} := \widetilde{\mathcal A_0}$
+  den <i>reduzierten Automaten</i> den man aus $\mathcal A$ durch Eliminieren unerreichbarer Zustände
+  und Zusammenfassen äquivalenter Zustände erhält.
 </p>
-<img src="/assets/img/diagrams/endliche/nea/1.11.svg" alt="Beispiel für 1.11">
+<p>Wir werden im Folgenden zeigen:</p>
+<ul>
+  <li>
+    $\mathcal A_{red}$ kann nicht weiter vereinfacht werden, d.h. er ist der kleinste DEA, mit dem
+    man $L(A)$ akzeptieren kann.
+  </li>
+  <li>
+    $\mathcal A_{red}$ hängt nur von $L(\mathcal A)$ und nicht von $\mathcal A$ ab, d.h. gilt $L(\mathcal A) = L(\mathcal B)$, so auch
+    $\mathcal A_{red} \; \simeq \;  \mathcal B_{red}$ (gleich bis auf Zustandsumbenennung, isomorph).
+  </li>
+</ul>
 <p>
-  wird überführt in einen äquivalenten ε-NEA:
+  Dazu konstruieren wir zu einer erkennbaren Sprache $L$ einen „kanonischen“ Automaten
+  $\mathcal A_{L}$ und zeigen, dass jeder reduzierte Automat, der $L$ akzeptiert, isomorph zu $\mathcal A_{L}$ ist.
 </p>
-<img src="/assets/img/diagrams/endliche/nea/1.11.2.svg" alt="Beispiel für 1.11.2">
-
-<h4>Lemma 1.12 (ε-NEA nicht stärker als NEA)</h4>
-<blockquote id="1-12">
-  <p>
-    Zu jedem ε-NEA kann man effektiv einen äquivalenten NEA konstruieren.
-  </p>
-</blockquote>
+<h4 id="2-13">Definition 2.13 (Nerode-Rechtskongruenz)</h4>
+<p> Es sei $L \subseteq \Sigma^*$ eine beliebige Sprache. Für $u,v \in \Sigma^*$ definieren wir:
+$u \simeq_L v$  <u>gdw.</u> $\forall w \in \Sigma^* : uw \in L \Leftrightarrow vw \in L$
+</p>
+<h4 id="2-14">Beispiel 2.14</h4>
 <p>
-  <b>Lemma 1.12</b> kann man auch verwenden, wenn man zeigen will, dass es zu jedem <i>endlichen</i> Transitionssystem
-  $\mathcal A = (\mathcal Q, \Sigma, \mathcal I, \Delta, \mathcal F )$
-  einen äquivalenten NEA $\mathcal A'$ gibt. Man definiert für einen neuen Zustand
-  $q \not\in \mathcal Q$ einen ε-NEA $\mathcal A'' = (\mathcal Q \cup \{q_0\}, \Sigma, q_0, \Delta'', \mathcal F )$
-  mit $ \Delta'' = \Delta \cup \{(q_0, \varepsilon, q) \enspace | \enspace q \in \mathcal I \}$
+  Wir betrachten die Sprache
 </p>
+$$
+  L = \{w \in \{a,b\}^* \enspace | \enspace ab \; \text{ist Infix von} \; w\}
+$$
 <p>
-  $\mathcal A''$ ist äquivalent zu $\mathcal A$. Man erhält nun $\mathcal A'$ aus $\mathcal A''$.
+  (vgl. Beispiele <a href="/endliche/nea#1-7">1.7</a>, <a href="#2-2">2.2</a>, <a href="#2-7">2.7</a>)
 </p>
-
-<h4 id="1-13"> Beispiel 1.13 </h4>
-<p>
-  Der ε-NEA <a href="1-11">aus Beispiel 1.11</a>:
-</p>
-<img src="/assets/img/diagrams/endliche/nea/1.11.2.svg" alt="Beispiel für 1.11.2">
-<p>
-  wird in folgenden NEA überführt:
-</p>
-<img src="/assets/img/diagrams/endliche/nea/1.13.svg" alt="Beispiel für 1.13">
-
-
