@@ -10,8 +10,8 @@ prv:
   link: nea
   title: Nichtdeterministische endliche Automaten
 nex:
-  link: dea
-  title: "Deterministische endliche Automaten"
+  link: ndn
+  title: Nachweis der Nichterkennbarkeit
 ---
 <p>
   Die bisher betrachteten NEAs heißen <u>nicht</u>deterministisch, weil es in ihnen zu einem Paar
@@ -254,5 +254,106 @@ $$
       <li>$\forall w : \varepsilon w \in L$ <u>gdw.</u> $bw \in L$</li>
     </ul>
   </li>
-  <li> Außerdem gilt $\varepsilon \; \simeq_L \; a$</li>
+  <li> Außerdem gilt $\varepsilon \; \simeq_L \; a: \varepsilon b \in L$, aber $a \cdot b \not\in L$</li>
 </ul>
+<h4 id="2-15">Lemma 2.15 (Eigenschaften von $\simeq_L$)</h4>
+<blockquote>
+  <ul>
+    <li>$\simeq_L$ <i>ist eine Äquivalenzrelation</i></li>
+    <li>
+      $\simeq_L$ <i>ist Rechtskongruenz, d.h. zusätzlich zu 1. gilt:
+      $u \simeq_L v \Rightarrow \forall w \in \Sigma^*: uw \simeq_L vw$ </i>
+    </li>
+    <li><i>L ist Vereinigung von $\simeq_L$-Klassen:</i></li>
+  </ul>
+  $$
+  L = \bigcup_{u \in L} [u]
+  $$
+  <p><i>wobei </i> $[u] := \{v \ | \ u \simeq_L v \}$ </p>
+  <ul><li>
+    Ist $L = L(\mathcal A)$ für einen DEA $\mathcal A$, so ist die Anzahl der $\simeq_L$-Klassen ≤ der Zustandszahl
+    von $\mathcal A$. Die Anzahl der  $\simeq_L$-Klassen heißt Index von  $\simeq_L$.
+  </li></ul>
+</blockquote>
+<h4 id="2-14-2">Beispiel 2.14 (Fortsetzung)</h4>
+<p>$\simeq_L$ hat drei Klassen:</p>
+<ul>
+  <li>$[\varepsilon] = \{b\}^*$</li>
+  <li>$[a] = \{b\}^* \cdot \{a\}^+$</li>
+  <li>$[ab] = \Sigma^* \cdot \{ab\} \cdot \Sigma^*$</li>
+</ul>
+<p>Man kann die $\simeq_L$-Klassen nun als Zustände eines Automaten für $L$ verwenden.</p>
+<h4 id="2-16">Definition 2.16 (Transitionssystem ${\mathcal A}_L$ zu einer Sprache $L$)</h4>
+<p>
+  Zu $L \subseteq \Sigma^* $ ist das Transitionssystem ${\mathcal A}_L := (\mathcal Q', \Sigma, {q_0}', \delta', \mathcal F')$
+  definiert durch:
+</p>
+<ul>
+  <li>$\mathcal Q' := \{[u] \ | \ u \in \Sigma^* \}$</li>
+  <li>$ {q_0}' := [\varepsilon]$</li>
+  <li>$ \delta'([u], a) := [ua]$ (repräsentantenunabhängig wegen <a href="#2-15">Lemma 2.15</a>)</li>
+  <li>$ \mathcal F' :=  \{[u] \ | \ u \in L\}$</li>
+</ul>
+<h4 id="2-17"> Lemma 2.17 </h4>
+<blockquote>
+  Hat $\simeq_L$ endlichen Index, so ist ${\mathcal A}_L$ ein DEA mit $L = L({\mathcal A}_L)$.
+</blockquote>
+<h4 id="2-18">Satz 2.18 (Satz von Nerode)</h4>
+<blockquote class="satz">
+  Eine Sprache $L$ ist erkennbar gdw. $\simeq_L$ hat endlichen Index (d.h. endlich viele Klassen).
+</blockquote>
+<h4 id="2-19">Beispiel 2.19 (Nicht-erkennbare Sprache)</h4>
+<p>Die Sprache $ L = \{a^n b^n \ | \ n \geq 0 \} $ ist nicht erkennbar, da für $n \neq m $ gilt:
+  $a^n \not\simeq_L a^m $ In der Tat gilt $a^n b^n \in L$, aber $a^m b^n \not\in L$.
+  Daher hat $\simeq_L$ unendlichen Index.
+</p>
+<p>
+  Wir werden im nächsten Abschnitt noch eine weitere Möglichkeit sehen, wie man für
+  eine Sprache zeigen kann, dass sie <i>nicht</i> regulär ist.
+</p>
+<p>
+  Zunächst untersuchen wir aber den Zusammenhang zwischen <i>reduzierten Automaten</i> und
+  der <i>Nerode-Rechtskongruenz</i>.
+</p>
+<h4 id="2-20">Definition 2.20 (Isomorphie von Automaten)</h4>
+<p>
+  Zwei DEAs $\mathcal A = (\mathcal Q, \Sigma, q_0, \delta, \mathcal F)$ und
+  ${\mathcal A}' = ({\mathcal Q}', \Sigma', {q_0}', \delta', {\mathcal F}')$
+  sind <i>isomorph</i> $ (\mathcal A \simeq {\mathcal A}')$
+  gdw. es eine Bijektion $f: \mathcal Q \rightarrow Q'$ gibt mit:
+</p>
+<ul>
+  <li>$f(q_0) = {q_0}'$</li>
+  <li>$f(\mathcal F) = {\mathcal F}'$, wobei $f(\mathcal F) := \{f(q) \ | \ q \in \mathcal F\}$</li>
+  <li>$f(\delta(q,a)) = \delta'(f(q), a)$ für alle $q \in \mathcal Q$, $a \in \Sigma$</li>
+</ul>
+<h4 id="2-21"> Lemma 2.21 (Isomorphie erhält die Sprache)</h4>
+<blockquote>
+$$
+\mathcal A \simeq {\mathcal A}' \Rightarrow L(\mathcal A) = L({\mathcal A}')
+$$
+</blockquote>
+<p>Wir können nun Minimalität und Eindeutigkeit des reduzierten Automaten zeigen.</p>
+<h4 id="2-22">Satz 2.22</h4>
+<p>Es sei L eine erkennbare Sprache. Dann gilt:</p>
+<blockquote class="satz">
+  <ol>
+    <li>${\mathcal A}_L$ hat minimale Zustandszahl unter allen DEAs, welche $L$ erkennen.</li>
+    <li>Ist $\mathcal A$ ein DEA mit $L(\mathcal A) = L$, so ist der reduzierte Automat $A_{red} := \widetilde {\mathcal A}_0$ isomorph
+      zu ${\mathcal A}_L$.</li>
+  </ol>
+</blockquote>
+<p>
+  Im Prinzip liefert dieser Satz eine Methode, um von zwei Automaten zu entscheiden, ob
+  sie dieselbe Sprache akzeptieren:
+</p>
+<h4 id="2-23">Korollar 2.23</h4>
+<p>
+  <i>Es seien $\mathcal A$ und ${\mathcal A}'$ DEAs. Dann gilt: $ L(\mathcal A) = L({\mathcal A}')$
+    gdw. $ {\mathcal A}_{red} \ \simeq \ {\mathcal A}_{red}'$</i>
+</p>
+<p>
+  Man kann die reduzierten Automaten wie beschrieben konstruieren. Für gegebene Automaten kann man feststellen,
+  ob sie isomorph sind (teste alle Bijektionen). Hat man <u>NEAs</u> gegeben, so kann man diese zuerst deterministisch
+  machen und dann das Korollar anwenden
+</p>
