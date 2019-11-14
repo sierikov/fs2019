@@ -1,0 +1,40 @@
+---
+layout: single
+title: Nachweis der Nichterkennbarkeit
+thema:
+  link: /endliche/
+  name: Endliche Automaten
+length: "03"
+position: 3
+prv:
+  link: dea
+  title: Nichtdeterministische endliche Automaten
+nex:
+  link: aue
+  title: Abschlusseigenschaften und Entscheidungsprobleme
+---
+<p>
+  Um nachzuweisen, dass eine gegebene Sprache erkennbar ist, genügt es, einen endlichen
+  Automaten (DEA oder NEA) dafür anzugeben. Der Nachweis, dass eine Sprache nicht
+  erkennbar ist, gestaltet sich schwieriger: Es genügt ja nicht zu sagen, dass man keinen
+  Automaten dafür gefunden hat. (Es gibt unendlich viele Automaten).
+</p>
+<p>
+  Wir haben bereits gesehen, dass man den Satz von Nerode (Satz 2.18) dazu verwenden
+  kann. Ein anderes Hilfsmittel hierfür ist das Pumping-Lemma:
+</p>
+<h4 id="3-1">Lemma 3.1 (Pumping-Lemma, einfache Version)</h4>
+<blockquote>
+  <p>
+    Es sei $L$ eine erkennbare Sprache. Dann gibt es eine natürliche Zahl $n_0 \geq 1$, so dass
+    gilt: Jedes Wort $w \in L$ mit $|w| \geq n_0$ lässt sich zerlegen in $w = xyz$ mit:
+  </p>
+  <ul>
+    <li>$y \neq \varepsilon$</li>
+    <li>$xy^k z \in L$ für alle $k \geq 0$</li>
+  </ul>
+</blockquote>
+<p>
+  Wir zeigen mit Hilfe dieses Lemmas (nochmals), dass die Sprache $\{a^n b^n \ | \ n \ \geq 0 \}$
+  (vgl. Beispiel 2.19) nicht erkennbar ist.
+</p>
