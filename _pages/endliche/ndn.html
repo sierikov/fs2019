@@ -47,7 +47,7 @@ nex:
   erkennbare Sprachen entscheidbar ist.
 </p>
 <h4 id="3-3">Satz 3.3 (Leerheitsproblem entscheidbar)</h4>
-<blockquote>
+<blockquote class="satz">
   <p>
     Es sei $L$ eine erkennbare Sprache (gegeben durch NEA oder DEA). Dann kann man
     effektiv entscheiden, ob $L = \emptyset$ oder nicht.
@@ -72,8 +72,37 @@ nex:
         $k + n − 1 \geq n − 1 \gt m $ (wegen $n − m = i \gt 1$).
       </li>
       <li>
-
+        $i = 1$, d.h. $n = m + 1$. <br>
+        Wegen $n + m \geq 3$ folgt $n = m + 1 \geq 2$.
+        Für $x = \varepsilon$, $y = a^2$, $z = a^{n−2} b^m$ gilt
+        <ul>
+          <li> $xy^0 z \in L$, da $n − 2 = m − 1 \neq m$</li>
+          <li> $xy^k z \in L$, für $k \geq 1$, da $(n − 2) + k \cdot 2 \geq n \gt m$</li>
+        </ul>
       </li>
     </ol>
   </li>
+  <li>Fall: $n \lt m$ <br> kann entsprechend behandelt werden.</li>
 </ul>
+<p>
+  Trotzdem ist $L = \{a^n b^m \ | \ n \neq m \}$ nicht erkennbar, was man mit der folgenden verschärften Variante des
+  Pumping-Lemmas nachweisen kann
+</p>
+<h4 id="3-5">Lemma 3.5 (Pumping-Lemma, verschärfte Variante)</h4>
+<p>Es sei $L$ eine erkennbare Sprache. Dann gibt es eine natürliche Zahl $n_0 \geq 1$, so dass gilt:</p>
+<blockquote>
+  <p>Für alle Wörter $u$, $v$, $w$ mit $uvw \in L$ und $|v| \geq n_0$ gibt es eine Zerlegung $v = xyz$ mit</p>
+  <ul>
+    <li>$y \neq \varepsilon$</li>
+    <li>$uxy^k zw \in L$ für alle $k \geq 0$</li>
+  </ul>
+</blockquote>
+<p>
+  Was ist der Vorteil dieses Lemmas beim Nachweis der Nichterkennbarkeit? Man weiß,
+  dass man beliebig positionierte Teilstücke zerlegen kann, wenn sie nur lang genug sind.
+  Dadurch kann man das y geeignet positionieren (im <a href="#3-4">Beispiel 3.4</a> im kürzeren Block).
+</p>
+<h4 id="3-6">Beispiel 3.4 (Fortsetzung)</h4>
+<p>
+  $L = \{a^n b^m \ | \ n \neq m \}$ ist <i>nicht</i> erkennbar.
+</p>
