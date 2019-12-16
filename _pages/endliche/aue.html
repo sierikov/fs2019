@@ -41,3 +41,94 @@ nex:
   Man kann derartige Abschlusseigenschaften auch dazu verwenden, Nichterkennbarkeit
   einer Sprache $L$ nachzuweisen.
 </p>
+<h4 id="4-2">Beispiel 4.2 (Abschlusseigenschaften zum Nachweis der Nichterkennbarkeit)</h4>
+<p>
+  $L := \{a^n b^m \ | \ n \neq m\}$ ist nicht erkennbar (vgl. Beispiel 3.4) Anstatt dies direkt mit
+  Lemma 3.5 zu zeigen, kann man auch verwenden, dass bereits bekannt ist, dass die
+  Sprache $L' := \{a^n b^n \ | \ n \geq 0\}$ <i>nicht</i> erkennbar ist. Wäre nämlich $L$
+  erkennbar, so mit Satz 4.1 auch $L' := \bar L \cap \{a\}^* \cdot \{b\}^*$. Da wir schon wissen, dass
+  $L'$ nicht erkennbar ist, kann auch $L$ nicht erkennbar sein.
+</p>
+<p>
+  Wir betrachten nun drei Probleme im Zusammenhang mit erkennbaren Sprachen, für
+  die wir Entscheidbarkeit und Komplexität untersuchen, und zwar:
+</p>
+<ul>
+  <li>das <i>Leerheitsproblem</i></li>
+  <li>das <i>Wortproblem</i></li>
+  <li>das <i>Äquivalenzproblem</i></li>
+</ul>
+<p>
+  Dabei gehen wir davon aus, dass die erkennbare Sprache durch einen DEA oder NEA gegeben ist. Bezüglich der
+  Entscheidbarkeit dieser Probleme macht es keinen Unterschied,
+  ob man einen DEA oder einen NEA gegeben hat, da man aus einem NEA effektiv einen
+  äquivalenten DEA konstruieren kann (Satz 2.4). Bezüglich der Komplexität kann der
+  Unterschied aber relevant sein, da der Übergang NEA → DEA exponentiell sein kann.
+</p>
+<h4>Leerheitsproblem</h4>
+<p>
+  <b>Gegeben:</b> erkennbare Sprache $L$ (als DEA oder NEA) <br>
+  <b>Frage:</b> Ist $L \neq \emptyset$? <br>
+  Wir wissen bereits (Satz 3.3), dass das Problem entscheidbar ist. Allerdings ist das im
+  Beweis des Satzes beschriebene Entscheidungsverfahren viel zu aufwendig (<i>exponentiell</i>
+  viele Wörter der Länge $< n_0$, falls $|\Sigma| > 1$).
+</p>
+<h4 id="4-3">Satz 4.3</h4>
+<blockquote class="satz">
+  <i>$\mathcal A = (\mathcal Q, \Sigma, q_0, \Delta, \mathcal F )$ ein NEA. <br>
+    Dann kann man das Problem „$L(\mathcal A) \neq \emptyset$?“ in der Zeit $O(|\mathcal Q| + |∆|)$
+    entscheiden</i>
+</blockquote>
+<h4>Wortproblem</h4>
+<p>
+  <b>Gegeben:</b> erkennbare Sprache $L$, Wort $w \in \Sigma^*$ <br>
+  <b>Frage:</b> Gillt $w \in L$?<br>
+  Ist $L = L(\mathcal A)$ für einen DEA $\mathcal A = (\mathcal Q, \Sigma, q_0, \Delta, \mathcal F)$,
+  so kann man einfach, beginnend mit
+  q0, durch Anwendung von δ berechnen, zu welchem Zustand in A man mit w kommt
+  und prüfen, ob dies ein Endzustand ist. Nimmt man Σ als konstant an, so benötigt eine
+  Anwendung von δ nur konstante Zeit. Dies liefert:
+</p>
+<h4 id="4-4">Satz 4.4</h4>
+<blockquote class="satz">
+  <i>
+    Es sei $\mathcal A = (\mathcal Q, \Sigma, q_0, \Delta, \mathcal F)$ ein DEA und $w \in \Sigma^*$.
+    Dann kann man „$w \in L(\mathcal A)$?“ in der
+    Zeit $O(|w|)$ entscheiden.
+  </i>
+</blockquote>
+<p>
+  Für einen NEA ist dies nicht so einfach, da man ja verschiedene mit $w$ beschriftete Pfade
+  haben kann und man diese (im schlimmsten Fall) alle betrachten muss, um festzustellen,
+  ob einer davon mit einem Endzustand aufhört.
+</p>
+<h4 id="4-5">Satz 4.5</h4>
+<blockquote class="satz">
+  <i>
+    Es sei $\mathcal A = (\mathcal Q, \Sigma, q_0, \Delta, \mathcal F)$ ein NEA und $w \in \Sigma^*$.
+    Dann kann man „$w \in L(\mathcal A)$?“ in der
+    Zeit $O(|w| · (|\mathcal Q| + |\Delta|))$ entscheiden.
+  </i>
+</blockquote>
+<h4>Äquivalenzproblem</h4>
+<p>
+  <b>Gegeben:</b> erkennbare Sprachen $L_1$, $L_2$ <br>
+  <b>Frage:</b> Gillt $L_1 = L_2$?<br>
+    Wie bereits erwähnt, kann man das Äquivalenzproblem auf das Leerheitsproblem <i>reduzieren</i>:
+  $L_1 = L_2$ gdw.:
+</p>
+$$
+(L_1 \cap \bar L_2) \cup (\bar L_1 \cap L_2 ) = \emptyset
+$$
+<h4 id="4-6">Satz 4.6</h4>
+<blockquote class="satz">
+  <i>
+    Das Äquivalenzproblem ist für erkennbare Sprachen entscheidbar. Sind die Sprachen
+    durch DEAs gegeben, so ist dies in polynomieller Zeit möglich.
+  </i>
+</blockquote>
+<p>
+  Wir werden später sehen, dass sich der exponentielle Zeitaufwand für
+  die Potenzmengenkonstruktion wahrscheinlich bei NEAs nicht vermeiden lässt:
+  das Äquivalenzproblem für NEAs ist <i>PSPACE</i>-vollständig (schlimmer als <i>NP</i>).
+</p>

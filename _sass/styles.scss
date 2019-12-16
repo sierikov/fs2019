@@ -60,7 +60,7 @@ blockquote  {
   color: #939393;
   position: relative;
   margin: 25px 0 50px;
-  max-width: 450px;
+  max-width: 550px;
 }
 
 blockquote:before {
@@ -85,6 +85,10 @@ blockquote.satz:before{
 body p,
 body pre {
   margin-bottom: 15px;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  font-size: 1.5em;
 }
 
 .site-wrapper img {
