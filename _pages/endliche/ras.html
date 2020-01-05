@@ -1,0 +1,195 @@
+---
+layout: single
+title: Reguläre Ausdrücke und Sprachen
+thema:
+  link: /endliche/
+  name: "Endliche Automaten"
+length: "05"
+position: 5
+prv:
+  link: aue
+  title: Abschlusseigenschaften und Entscheidungsprobleme
+---
+<p>
+  Wir haben bisher <i>verschiedene äquivalente Charakterisierungen</i> der Klasse der erkennbaren Sprachen mit Hilfe von
+  Transitionssystemen und Rechtskongruenzen gesehen:
+</p>
+<p>
+  Eine Sprache $L \subset \Sigma^*$
+  ist erkennbar gdw:
+</p>
+<ul>
+  <li>$L = L(\mathcal A)$ für einen NEA $\mathcal A$</li>
+  <li>$L = L(\mathcal A)$ für einen $\varepsilon$-NEA $\mathcal A$</li>
+  <li>$L = L(\mathcal A)$ für einen NEA mit Wortübergängen $\mathcal A$</li>
+  <li>$L = L(\mathcal A)$ für ein endliches Transitionssystem $\mathcal A$</li>
+  <li>$L = L(\mathcal A)$ für einen DEA $\mathcal A$</li>
+</ul>
+<p>
+  Im Folgenden betrachten wir eine weitere Charakterisierung mit Hilfe <i>regulärer Ausdrücke</i>.
+</p>
+<h4 id="5-1">Definition 5.1 (Syntax regulärer Ausdrücke)</h4>
+<p>
+  Es sei $\Sigma$ ein endliches Alphabet. Die Menge $Reg_{\Sigma}$ der <i>regulären Ausdrücke über</i> $\Sigma$ ist
+  induktiv definiert:
+</p>
+<ul>
+  <li>$ \emptyset$,  $\varepsilon$, $a$ (für $a \in \Sigma$) sind Elemente von $Reg_{\Sigma}$.</li>
+  <li>Sind $r, s \in Reg_{\Sigma}$, so auch ($r + s$), ($r \cdot s$), $r^* \in Reg_{\Sigma}$.</li>
+</ul>
+<h4 id="5-2">Beispiel 5.2</h4>
+$$
+((a \cdot b^*) + \emptyset^*)^* \in Reg_{\Sigma}
+$$
+<p>
+  für $\Sigma = \{a,b\}$.
+</p>
+<h6>Notation:</h6>
+<p>
+  Um Klammern zu sparen, lassen wir Außenklammern weg und vereinbaren,
+</p>
+<ul>
+  <li>dass $*$ stärker bindet als $\cdot$</li>
+  <li>dass $\cdot$ stärker bindet als $+$</li>
+  <li>$\cdot$ lassen wir meist ganz wegfallen.</li>
+</ul>
+<p>
+  Der Ausdruck aus <a href="#5-2">Beispiel 5.2</a> kann also geschrieben werden als $(ab^* + \emptyset^*)^*$.
+</p>
+<p>
+  Jedem regulären Ausdruck $r$ über $\Sigma$ wird eine formale Sprache $L(r)$ zugeordnet
+</p>
+<h4 id="5-3">Definition 5.3 (Semantik regulärer Ausdrücke)</h4>
+<p>
+  Die durch den regulären Ausdruck $r$ definierte Sprache $L(r)$ ist induktiv definiert:
+</p>
+<ul>
+  <li>$L(\emptyset) := \emptyset$, $L(\varepsilon) := \{\varepsilon\}$, $L(a) := \{a\}$</li>
+  <li>$L(r + s) := L(r) \cup L(s)$, $L(r \cdot s) := L(r) \cdot L(s)$, $L(r^*) := L(r)^*$</li>
+</ul>
+<p>
+  Eine Sprache $L \subset \Sigma^*$ heißt <i>regulär</i>, falls es ein $r \in Reg_{\Sigma}$ gibt mit $L = L(r)$.
+</p>
+<h4 id="5-4">Beispiel 5.4</h4>
+<ul>
+  <li> $(a + b)^* ab(a + b)^*$ definiert die Sprache aller Wörter über $\{a, b\}$, die Infix ab haben.</li>
+  <li> $L(ab^* + b) = \{ab^i | i \geq 0\} \cup \{b\}$</li>
+</ul>
+<h6>Bemerkung:</h6>
+<p>
+  Statt $L(r)$ schreiben wir im Folgenden häufig einfach $r$.<br>
+  Dies ermöglicht es zu schreiben:
+</p>
+<ul>
+  <li>$abb \in ab^* + b$ (eigentlich $abb \in L(ab^* + b)$)</li>
+  <li>$(ab)^* a = a(ba)^*$ (eigentlich $L((ab)^* + a) = L(a(ba)^*)$)</li>
+</ul>
+<h4 id="5-5">Satz 5.5 (Satz von Kleene)</h4>
+<blockquote class="satz">
+  <i>
+    Für eine Sprache $L \subset \Sigma^*$ sind äquivalent:
+  </i>
+  <ol>
+    <li><i>$L$ ist regulär</i></li>
+    <li><i>$L$ ist erkennbar</i></li>
+  </ol>
+</blockquote>
+<h4 id="5-6">Beispiel 5.6</h4>
+<p>
+  Gegeben sei der folgende NEA $\mathcal A$
+</p>
+<img src="/assets/img/diagrams/endliche/ras/5.6.svg" alt="Beispiel für 5.6">
+<p>
+  Die Sprachen $L_q$ für $q \in \mathcal Q = \{0, 1, 2\}$ kann man bestimmen als
+</p>
+<ul>
+  <li>$L_0 = \{a\} \cdot L_0 \cup \{a\} \cdot L_1$</li>
+  <li>$L_1 = \{b\} \cdot L_2$</li>
+  <li>$L_2 = \{b\} \cdot L_1 \cup \{\varepsilon\}$ (2 ist Endzustand)</li>
+</ul>
+<p>
+  <u>Allgemein:</u><br>
+  Seien $p, q \in \mathcal Q$. Wir definieren:
+</p>
+<ul>
+  <li>$A_{p,q} = \{a \in \Sigma \enspace | \enspace (p,a,q) \in \Delta \}$ und</li>
+  <li>$A_p = \begin{cases}
+    \{\varepsilon\}, & \text{falls  $p \in F$} \\
+    \emptyset, & \text{falls $p \not \in F$} \\
+    \end{cases}$</li>
+</ul>
+<p>
+  Damit erfüllen die Sprachen $L_p$ die folgenden Gleichungen. Für alle $p \in \mathcal Q$ gilt:
+</p>
+$$
+L_p = (\bigcup_{q \in \mathcal Q} A_{p,q} \cdot L_q) \cup B_p
+$$
+<h6>Behauptung:</h6>
+<p>Das Gleichungssystem</p>
+$$
+(\star) \enspace X_p = (\bigcup_{q \in \mathcal Q} A_{p,q} \cdot X_q) \cup B_p \enspace (p \in \mathcal Q)
+$$
+<p>
+  hat <i>genau eine</i> Lösung und diese besteht aus <i>regulären</i> Sprachen.
+</p>
+<p>
+  Aus der Behauptung folgt, dass die Sprachen $X_p = L_p$ regulär sind, da sie ja das System
+  ($\star$) lösen.
+</p>
+<p>
+  Wir zeigen zunächst, wie man eine einzige Gleichung der Form
+</p>
+$$
+(\star\star) \enspace X = A \cdot X \cup B
+$$
+<p>
+  lösen kann. Daraus ergibt sich dann die Lösung von Gleichungssystemen der Form ($\star$)
+  durch Induktion über die Anzahl der Variablen
+</p>
+<h4 id="5-7">Lemma 5.7 (Arden)</h4>
+<p>Es seien $A, B \subseteq \Sigma^*$ und $\varepsilon \not \in A.</p>
+<blockquote>
+  <i>Die Gleichung ($\star\star$) $X = A \cdot X \cup B$ hat als eindeutige
+    Lösung $X = A^* \cdot B$</i>.
+</blockquote>
+<h6>Beachte:</h6>
+<p>Sind $A, B$ regulär, so auch $A^* B$.</p>
+<p>
+  Aus dem Lemma folgt dann für die Gleichung ($\star$), die wir als Gleichung der Form ($\star\star$)
+  für ein fixiertes $p \in \mathcal Q$ auffassen:
+</p>
+$$
+X_p = A_{p,p} \cdot X_p \cup ((\bigcup_{p \neq q} A_{p,q} \cdot X_q) \cup B_p)
+$$
+<p>hat als eindeutige Lösung</p>
+$$
+X_p = A_{p,p}^* \cdot ((\bigcup_{q \neq p} A_{p,q} \cdot X_q) \cup B_p)
+$$
+<p>
+  Setzt man diese Lösung in ($\star$) ein, so erhält man ein System mit einer Variablen weniger.
+  Nach Induktion hat dieses eine eindeutige Lösung, die aus regulären Sprachen besteht.
+  Da in obiger Lösung für $X_p$ nur reguläre Operationen ($\cup$, $\cdot$, $*$) verwendet werden, ist auch
+  diese Lösung regulär (und eindeutig nach Arden).
+</p>
+<h4 id="5-6-2">Beispiel 5.6 (Fortsetzung)</h4>
+<ul>
+  <li>$X_0 = \{a\} \cdot X_0 \cup \{a\} \cdot X_1$</li>
+  <li>$X_1 = \{b\} \cdot X_2$</li>
+  <li>$X_2 = \{b\} \cdot X_1 \cup \{\varepsilon\}$</li>
+</ul>
+<h6>Auflösen nach $X_0$:</h6>
+<p>$X_0 = \{a\}^* \cdot \{a\} \cdot X_1$ <br> Einsetzen ändert die anderen Gleichungen nicht.</p>
+<h6>Auflösen nach $X_1$:</h6>
+<p>
+  $X_1 = \emptyset^* \cdot \{b\} \cdot X_2 = \{b\} \cdot X_2$ <br>Einsetzen liefert: <br>
+  $X_2 = \{b\} \cdot \{b\} \cdot X_2 \cup \{\varepsilon\}$
+</p>
+<h6>Auflösen nach $X_2$:</h6>
+<p>
+  $X_2 = (\{b\} \cdot \{b\})^*$ <br> Damit ist <br>
+  $X_1 = \{b\} · (\{b\} · \{b\})^*$ <br> und <br>
+  $X_0 = \{a\}^* \cdot \{a\} \cdot \{b\} \cdot (\{b\} \cdot \{b\})^* = L(\mathcal A).$
+</p>
+<p>Als regulären Ausdruck für $L(\mathcal A)$ liefert dieses Verfahren also:
+  $L(\mathcal A) = L(a^* ab(bb)^*)$.
+</p>
