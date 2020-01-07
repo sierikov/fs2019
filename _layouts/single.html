@@ -6,8 +6,13 @@ addons: single single-post
   <article>
 
     <div class="single-post-header-content content-1170 center-relative">
-      <img src="{{ site.url }}{{ site.baseurl }}/assets/img/backgrounds/chapters/{{page.position}}.png"
+      {% if page.prax %}
+      <img src="/assets/img/backgrounds/prax/{{page.position}}.png"
            class="crop" alt="">
+      {% else %}
+      <img src="/assets/img/backgrounds/chapters/{{page.position}}.png"
+           class="crop" alt="">
+      {% endif %}
     </div>
 
     <div class="post-wrapper center-relative">
@@ -15,6 +20,7 @@ addons: single single-post
       <div class="single-content-wrapper content-960 center-relative">
         <div class="post-info-wrapper">
           <div class="entry-info">
+            {% if page.length %}
             <div>
               <div class="text-holder">
                 LANGE
@@ -23,6 +29,7 @@ addons: single single-post
                   {{page.length}} Seiten
               </div>
             </div>
+            {% endif %}
             <div>
               <div class="text-holder">
                 POSITION

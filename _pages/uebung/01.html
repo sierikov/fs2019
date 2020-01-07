@@ -1,0 +1,57 @@
+---
+layout: single
+title: Übung 01
+prax: true
+thema:
+  link: /uebung/
+  name: Übungen
+position: 1
+prv:
+  link: 02
+  title: Übung 02
+
+---
+<p>
+  Die erste zwei Aufgaben (*) und (**) helfen uns in der Selbstkontrolle.
+</p>
+<h4 id="3-1">(*) Operationen über Mengen</h4>
+<p>
+  <b>Aufgabe</b>: Gegeben seien die zwei Mengen $M = \{a, b, c\}$ und $N = \{0, 1\}$.
+  Beschreiben Sie oder Aufzahlen Sie folgende Mengen:<br>
+  $M^*$, $M+$, $M^2$, $M \cdot (M \cup N)^*$, $\mathcal P(M)$, $\mathcal P(M^*)$.
+</p>
+<p><b>Lösung:</b></p>
+<ul>
+  <li>
+    <p>
+      $M^*$ - Jede mögliche Kombination von Elementen beliebiger Länge in der Menge $M$. <i>Unendliche Menge</i> <br>
+      Zum Beispiel: $\varepsilon \in M^*$, $ abc \in M^*$, $ acbcbbac \in M^*$
+    </p>
+  </li>
+  <li>
+    <p>
+      $M^+$ - das gleiche wie $M^*$, <i>aber</i>  $\varepsilon \not \in M^*$.
+    </p>
+  </li>
+  <li>
+    <p>
+      $M^2$ - fast wie die Multiplizieren von Klammern. <br> Also $M^2$ = $M \cdot M$ = $ \{a,b,c\} \cdot \{a,b,c\}$ =
+      $\{aa, ab, ac, ba, bb, bc, ca, cb, cc\}$.
+    </p>
+  </li>
+  <li>
+    <p>
+      $M \cdot (M \cup N)$ - fast wie die Multiplizieren von Klammern x2. <br> Also $M \cup N$ =
+      $\{a,b,c\} \cup \{0,1\}$ = $\{a,b,c,0,1\}$. Und jetzt haben wir die Situation von der vorherigen Aufgabe.<br>
+      $M \cdot (M \cup N)$ = $\{a,b,c\} \cdot \{a,b,c,0,1\}$ = $\{aa, ab, ac, a0, a1 \dots c0, c1\}$.
+    </p>
+  </li>
+  <li>
+    <p>
+      $\mathcal P(M)$ - Die Potenzmenge von der Menge $M$.<br>
+      $2^{|M|}$ $2^{|\{a,b,c\}|}$ = $2^3$ = $8$. - Anzahl der Mengen in der Potenzmenge.<br>
+      $\mathcal P(M)$ = $\{$$\emptyset,$$ \{a\}$,$ \{b\}$, $\{c\},$$ \{a, c\},$$ \{a, b\},$$ \{b,c\},$$ \{a,b,c\}\}$
+
+    </p>
+  </li>
+</ul>
