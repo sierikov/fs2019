@@ -68,11 +68,12 @@ prv:
 <p><b>Lösung</b>: <i>Radar</i>, <i>Wow</i>, <i>Ebbe</i> und
   <a href="https://de.wikipedia.org/wiki/Liste_deutscher_Palindrome" target="_blank">
     so weiter
-  </a>
-  .
+  </a>.
 </p>
-<p><b>Aufgabe 2</b>: Gegeben seien die zwei Wörter $w_1 = aabc$ und $w_2 = bcc$. Berechnen Sie:
-$w_1 \cdot w_2$, $((w_1^R \cdot w_2)^R)^2$, $w_1 \cdot (w_2^R \cdot w_1^3)^0$</p>
+<p>
+  <b>Aufgabe 2</b>: Gegeben seien die zwei Wörter $w_1 = aabc$ und $w_2 = bcc$. Berechnen Sie:
+  $w_1 \cdot w_2$, $((w_1^R \cdot w_2)^R)^2$, $w_1 \cdot (w_2^R \cdot w_1^3)^0$
+</p>
 <p><b>Lösung</b>:</p>
 <ul>
   <li>$w_1 \cdot w_2$ $=$ $aabc \cdot bcc$ $=$ $aabcbcc$</li>
@@ -122,13 +123,51 @@ $w_1 \cdot w_2$, $((w_1^R \cdot w_2)^R)^2$, $w_1 \cdot (w_2^R \cdot w_1^3)^0$</p
 <p>
   1. $L_0$ $:=$ $\{w \in \{a, ... , z\}^* \enspace | \enspace w$ enthält die Zeichenfolge <b>“theorie”</b>$\}$
 </p>
-<img src="/assets/img/diagrams/uebung/01/3.svg" alt="3 Aufgabe">
+<img src="/assets/img/diagrams/uebung/01/3.svg" alt="3 Aufgabe Formale Systeme">
 <p>
   2. $L_1$ $:=$ $\{a m \enspace | \enspace m$ ist ein Vielfaches von 3 $\}$
 </p>
-<img src="/assets/img/diagrams/uebung/01/4.svg" alt="4 Aufgabe">
-<p>Transitionssystem lautet: $\mathcal A$$=$$(\{q_0, q_1, q_2\}, \{a\}, q_0, \delta, q_0)$</p>
+<img src="/assets/img/diagrams/uebung/01/4.svg" alt="3 Aufgabe Formale systeme">
+<p>Transitionssystem lautet: $\mathcal A$$=$$(\{q_0, q_1, q_2\}, \{a\}, q_0, \Delta, q_0)$</p>
 <p>
   3. $L_2$ $:=$ $\{w \in \{a, b\}^* \enspace | \enspace |w|_a = |w|_b\}$
 </p>
-<img src="/assets/img/diagrams/uebung/01/5.svg" alt="4 Aufgabe">
+<img src="/assets/img/diagrams/uebung/01/5.svg" alt="3 Aufgabe Formale Systeme">
+<p>Transitionssystem lautet: $\mathcal A$$=$$(\{q_i : i \in \mathbb Z\},$$ \{a, b\},$$ q_0,$$ \{(q_i, a, q_{i+1}), (q_i, a, q_{i+1}) : \in \mathbb Z \},$$ q_0)$</p>
+<p>
+  4.  $L_3$ $:=$ $\{a^n b^n \enspace | \enspace n \in \mathbb N \}$.
+</p>
+<img src="/assets/img/diagrams/uebung/01/6.svg" alt="3 Aufgabe Formale Systeme">
+<p>Transitionssystem lautet: $\mathcal A$$=$$(\{q_i : i \in \mathbb Z\},$$ \{a, b\},$$ q_0,$$\Delta,$$ \{q_0, q_2\})$</p>
+<h4 id="1-4">4 Aufgabe</h4>
+<p>
+  Gegeben ist die grafische Darstellung der Übergangsrelation $\Delta$ für einen NEA mit
+  Wört übergangen $\mathcal A$:
+</p>
+<img src="/assets/img/diagrams/uebung/01/7.svg" alt="4 Aufgabe Formale Systeme">
+<p>
+  Konstruieren Sie, wie im Beweis von Lemma 1.10 der Vorlesung gezeigt, zu diesem NEA einen äquivalenten
+  $\varepsilon$-NEA $A_0$. Geben Sie die 5-Tupel zur Beschreibung beider Automaten einschließlich aller
+  Komponenten an.
+</p>
+<img src="/assets/img/diagrams/uebung/01/8.svg" alt="4 Aufgabe Formale Systeme">
+<h4 id="1-5">5 Aufgabe</h4>
+<p>
+  Gegeben ist die grafische Darstellung der Übergangsrelation  $\Delta$ für einen $\varepsilon$-NEA A:
+</p>
+<img src="/assets/img/diagrams/uebung/01/9.svg" alt="5 Aufgabe Formale Systeme">
+<p>
+  Konstruieren Sie analog der Vorgehensweise im Beweis von Lemma 1.12 aus der Vorlesung
+  zu $\mathcal A$ einen aquivalenten NEA $\mathcal A_0$. Geben Sie die 5-Tupel zur Beschreibung beider Automaten
+  einschließlich aller Komponenten an.
+</p>
+<p>
+  <b>1. Schritt</b><br>
+  $\varepsilon$-Übergänge weglassen.
+</p>
+<img src="/assets/img/diagrams/uebung/01/10.svg" alt="5 Aufgabe Formale Systeme">
+<p>
+  <b>2. Schritt</b><br>
+  Finden und reparieren Übergänge.
+</p>
+<img src="/assets/img/diagrams/uebung/01/11.svg" alt="5 Aufgabe Formale Systeme">
