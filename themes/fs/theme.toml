@@ -1,0 +1,12 @@
+name = "fs"
+license = "MIT"
+licenselink = ""
+description = ""
+homepage = ""
+tags = []
+features = []
+min_version = "0.41.0"
+
+[author]
+  name = "sierikov"
+  homepage = ""

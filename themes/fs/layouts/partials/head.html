@@ -1,0 +1,20 @@
+<head>
+  <title>Formale Systeme</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="description" content="Formale Systeme script by Artem Sierikov" />
+  <meta name="keywords" content="Formale Systeme, TU Dresden" />
+  <meta name="author" content="Sierikov" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <link rel="shortcut icon" href="/images/favicon.png" />
+  <link href="https://fonts.googleapis.com/css?family=Work%20Sans:400,500,700,900%7CPT%20Serif%7CRoboto:700" rel="stylesheet" type="text/css">
+
+
+  {{ $options := (dict "outputStyle" "compressed" "enableSourceMap" true) }}
+
+  {{ $sass := resources.Get "/sass/styles.scss" }}
+  {{ $style := $sass | resources.ToCSS $options }}
+  <link rel="stylesheet" type="text/css"  href="{{ $style.Permalink }}" />
+  <link rel="stylesheet" type="text/css"  href="/css/plugins/awesome.css" />
+  <link rel="stylesheet" type="text/css"  href="/css/plugins/swiper.min.css" />
+</head>

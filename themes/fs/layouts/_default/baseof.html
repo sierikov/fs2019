@@ -1,0 +1,14 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+{{ partial "head.html" . }}
+<body>
+<div class="site-wrapper">
+
+    <div id="content" class="site-content">
+      {{ block "main" . }}{{.Content}}{{ end }}
+    </div>
+
+</div>
+
+</body>
+</html>

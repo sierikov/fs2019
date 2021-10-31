@@ -1,0 +1,4 @@
+baseURL = 'https://fs2019.ga/'
+languageCode = 'de-de'
+title = 'Formal Systems 2019'
+theme = 'fs'
